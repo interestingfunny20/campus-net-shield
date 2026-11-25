@@ -1,0 +1,197 @@
+[
+  {
+    "domain": "mku-edu.cn",
+    "url": "http://mku-edu.cn",
+    "group": "形近替换"
+  },
+  {
+    "domain": "mku-edu.com",
+    "url": "http://mku-edu.com",
+    "group": "形近替换"
+  },
+  {
+    "domain": "mkuedu.cn",
+    "url": "http://mkuedu.cn",
+    "group": "形近替换"
+  },
+  {
+    "domain": "mku.edu.com",
+    "url": "http://mku.edu.com",
+    "group": "形近替换"
+  },
+  {
+    "domain": "mkv.edu.cn",
+    "url": "http://mkv.edu.cn",
+    "group": "形近替换"
+  },
+  {
+    "domain": "rnku.edu.cn",
+    "url": "http://rnku.edu.cn",
+    "group": "形近替换"
+  },
+  {
+    "domain": "mkujwc.cn",
+    "url": "http://mkujwc.cn",
+    "group": "形近替换"
+  },
+  {
+    "domain": "www.mku-edu.cn",
+    "url": "http://www.mku-edu.cn",
+    "group": "形近替换"
+  },
+  {
+    "domain": "mku-edu.top",
+    "url": "http://mku-edu.top",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.xyz",
+    "url": "http://mku-edu.xyz",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.icu",
+    "url": "http://mku-edu.icu",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.vip",
+    "url": "http://mku-edu.vip",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.club",
+    "url": "http://mku-edu.club",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.online",
+    "url": "http://mku-edu.online",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.site",
+    "url": "http://mku-edu.site",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.link",
+    "url": "http://mku-edu.link",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.monster",
+    "url": "http://mku-edu.monster",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.stream",
+    "url": "http://mku-edu.stream",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "mku-edu.rest",
+    "url": "http://mku-edu.rest",
+    "group": "可疑TLD"
+  },
+  {
+    "domain": "jw.mku-edu.cn",
+    "url": "http://jw.mku-edu.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "jwc.mku-edu.cn",
+    "url": "http://jwc.mku-edu.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "login.mku-edu.cn",
+    "url": "http://login.mku-edu.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku-login.cn",
+    "url": "http://mku-login.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku-jwc.cn",
+    "url": "http://mku-jwc.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku-xsc.cn",
+    "url": "http://mku-xsc.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku-pay.cn",
+    "url": "http://mku-pay.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku-grant.cn",
+    "url": "http://mku-grant.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku-subsidy.top",
+    "url": "http://mku-subsidy.top",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku-jw.cn",
+    "url": "http://mku-jw.cn",
+    "group": "诱导子域"
+  },
+  {
+    "domain": "mku.edu.cn.login-verify.top",
+    "url": "http://mku.edu.cn.login-verify.top",
+    "group": "拼接官方"
+  },
+  {
+    "domain": "mku.edu.cn.verify.xyz",
+    "url": "http://mku.edu.cn.verify.xyz",
+    "group": "拼接官方"
+  },
+  {
+    "domain": "mku.edu.cn.evil.com",
+    "url": "http://mku.edu.cn.evil.com",
+    "group": "拼接官方"
+  },
+  {
+    "domain": "mku.edu.cn.secure-login.com",
+    "url": "http://mku.edu.cn.secure-login.com",
+    "group": "拼接官方"
+  },
+  {
+    "domain": "mku.edu.cn.account-update.club",
+    "url": "http://mku.edu.cn.account-update.club",
+    "group": "拼接官方"
+  },
+  {
+    "domain": "xkmu.edu.cn",
+    "url": "http://xkmu.edu.cn",
+    "group": "无关对照"
+  },
+  {
+    "domain": "mkx.edu.cn",
+    "url": "http://mkx.edu.cn",
+    "group": "无关对照"
+  },
+  {
+    "domain": "nkmu.edu.cn",
+    "url": "http://nkmu.edu.cn",
+    "group": "无关对照"
+  },
+  {
+    "domain": "mku2.edu.cn",
+    "url": "http://mku2.edu.cn",
+    "group": "无关对照"
+  },
+  {
+    "domain": "jnku.edu.cn",
+    "url": "http://jnku.edu.cn",
+    "group": "无关对照"
+  }
+]

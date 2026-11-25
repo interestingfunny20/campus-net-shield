@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "校园钓鱼网页检测助手",
+  "version": "1.0.0",
+  "description": "打开任意网站自动检测钓鱼风险，无论安全与否都会弹窗提示。面向高校学生的轻量安全工具。",
+  "permissions": [
+    "tabs",
+    "notifications",
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "校园钓鱼网页检测助手",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

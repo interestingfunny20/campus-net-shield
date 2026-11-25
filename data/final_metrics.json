@@ -1,0 +1,82 @@
+{
+  "rule_scope_a": {
+    "scope": "口径A 全样本",
+    "tp": 0,
+    "fn": 100,
+    "fp": 0,
+    "tn": 102,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_positive_rate": 0.0,
+    "accuracy": 0.505
+  },
+  "rule_scope_b": {
+    "scope": "口径B 仅可判定",
+    "tp": 0,
+    "fn": 17,
+    "fp": 0,
+    "tn": 87,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "false_positive_rate": 0.0,
+    "accuracy": 0.8365
+  },
+  "rule_pos_dist": {
+    "未知": 83,
+    "安全": 17
+  },
+  "rule_neg_dist": {
+    "安全": 85,
+    "未知": 15,
+    "TIMEOUT": 2
+  },
+  "onsite": {
+    "hit": 33,
+    "n": 39,
+    "by_group": {
+      "形近替换": {
+        "n": 8,
+        "hit": 5
+      },
+      "可疑TLD": {
+        "n": 11,
+        "hit": 11
+      },
+      "诱导子域": {
+        "n": 10,
+        "hit": 10
+      },
+      "拼接官方": {
+        "n": 5,
+        "hit": 5
+      },
+      "无关对照": {
+        "n": 5,
+        "hit": 2
+      }
+    },
+    "dist": {
+      "可疑": 33,
+      "未知": 5,
+      "安全": 1
+    }
+  },
+  "ml": {
+    "tp": 83,
+    "fn": 17,
+    "fp": 20,
+    "tn": 82,
+    "precision": 0.8058,
+    "recall": 0.83,
+    "f1": 0.8177,
+    "false_positive_rate": 0.1961,
+    "accuracy": 0.8168
+  },
+  "ml_cv_f1": 0.7973,
+  "ml_train": {
+    "pos": 1500,
+    "neg": 1500
+  }
+}

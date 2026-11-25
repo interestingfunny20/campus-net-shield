@@ -1,0 +1,392 @@
+[
+  {
+    "url": "http://mku-edu.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5451,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.com",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5673,
+    "changed": false
+  },
+  {
+    "url": "http://mkuedu.cn",
+    "rule_score": 0.0,
+    "rule_level": "未知",
+    "score": 0.0,
+    "level": "安全",
+    "ml_floor": 0.0,
+    "ml_prob": 0.1868,
+    "changed": true
+  },
+  {
+    "url": "http://mku.edu.com",
+    "rule_score": 0.0,
+    "rule_level": "安全",
+    "score": 0.0,
+    "level": "安全",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0388,
+    "changed": false
+  },
+  {
+    "url": "http://mkv.edu.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0,
+    "changed": false
+  },
+  {
+    "url": "http://rnku.edu.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0,
+    "changed": false
+  },
+  {
+    "url": "http://mkujwc.cn",
+    "rule_score": 0.0,
+    "rule_level": "未知",
+    "score": 0.0,
+    "level": "安全",
+    "ml_floor": 0.0,
+    "ml_prob": 0.1591,
+    "changed": true
+  },
+  {
+    "url": "http://www.mku-edu.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5183,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.top",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.6806,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.xyz",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.6807,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.icu",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.6844,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.vip",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.6806,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.club",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7463,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.online",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7747,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.site",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7535,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.link",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7463,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.monster",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7917,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.stream",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7629,
+    "changed": false
+  },
+  {
+    "url": "http://mku-edu.rest",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7463,
+    "changed": false
+  },
+  {
+    "url": "http://jw.mku-edu.cn",
+    "rule_score": 55.0,
+    "rule_level": "可疑",
+    "score": 55.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5506,
+    "changed": false
+  },
+  {
+    "url": "http://jwc.mku-edu.cn",
+    "rule_score": 55.0,
+    "rule_level": "可疑",
+    "score": 55.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5349,
+    "changed": false
+  },
+  {
+    "url": "http://login.mku-edu.cn",
+    "rule_score": 55.0,
+    "rule_level": "可疑",
+    "score": 55.0,
+    "level": "可疑",
+    "ml_floor": 45.0,
+    "ml_prob": 0.806,
+    "changed": false
+  },
+  {
+    "url": "http://mku-login.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.664,
+    "changed": false
+  },
+  {
+    "url": "http://mku-jwc.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5046,
+    "changed": false
+  },
+  {
+    "url": "http://mku-xsc.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5046,
+    "changed": false
+  },
+  {
+    "url": "http://mku-pay.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5834,
+    "changed": false
+  },
+  {
+    "url": "http://mku-grant.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5889,
+    "changed": false
+  },
+  {
+    "url": "http://mku-subsidy.top",
+    "rule_score": 50.0,
+    "rule_level": "可疑",
+    "score": 50.0,
+    "level": "可疑",
+    "ml_floor": 38.0,
+    "ml_prob": 0.7599,
+    "changed": false
+  },
+  {
+    "url": "http://mku-jw.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.5049,
+    "changed": false
+  },
+  {
+    "url": "http://mku.edu.cn.login-verify.top",
+    "rule_score": 65.0,
+    "rule_level": "可疑",
+    "score": 68.0,
+    "level": "高危",
+    "ml_floor": 68.0,
+    "ml_prob": 0.9966,
+    "changed": true
+  },
+  {
+    "url": "http://mku.edu.cn.verify.xyz",
+    "rule_score": 65.0,
+    "rule_level": "可疑",
+    "score": 65.0,
+    "level": "可疑",
+    "ml_floor": 55.0,
+    "ml_prob": 0.9397,
+    "changed": false
+  },
+  {
+    "url": "http://mku.edu.cn.evil.com",
+    "rule_score": 55.0,
+    "rule_level": "可疑",
+    "score": 68.0,
+    "level": "高危",
+    "ml_floor": 68.0,
+    "ml_prob": 0.9654,
+    "changed": true
+  },
+  {
+    "url": "http://mku.edu.cn.secure-login.com",
+    "rule_score": 55.0,
+    "rule_level": "可疑",
+    "score": 68.0,
+    "level": "高危",
+    "ml_floor": 68.0,
+    "ml_prob": 0.987,
+    "changed": true
+  },
+  {
+    "url": "http://mku.edu.cn.account-update.club",
+    "rule_score": 65.0,
+    "rule_level": "可疑",
+    "score": 68.0,
+    "level": "高危",
+    "ml_floor": 68.0,
+    "ml_prob": 0.9962,
+    "changed": true
+  },
+  {
+    "url": "http://xkmu.edu.cn",
+    "rule_score": 0.0,
+    "rule_level": "未知",
+    "score": 0.0,
+    "level": "安全",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0,
+    "changed": true
+  },
+  {
+    "url": "http://mkx.edu.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0,
+    "changed": false
+  },
+  {
+    "url": "http://nkmu.edu.cn",
+    "rule_score": 0.0,
+    "rule_level": "未知",
+    "score": 0.0,
+    "level": "安全",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0,
+    "changed": true
+  },
+  {
+    "url": "http://mku2.edu.cn",
+    "rule_score": 40.0,
+    "rule_level": "可疑",
+    "score": 40.0,
+    "level": "可疑",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0,
+    "changed": false
+  },
+  {
+    "url": "http://jnku.edu.cn",
+    "rule_score": 0.0,
+    "rule_level": "未知",
+    "score": 0.0,
+    "level": "安全",
+    "ml_floor": 0.0,
+    "ml_prob": 0.0,
+    "changed": true
+  }
+]

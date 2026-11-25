@@ -1,0 +1,237 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  width: 380px;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  background: linear-gradient(180deg, #fff7ed 0%, #ffedd5 100%);
+  color: #7c2d12;
+}
+
+.container { padding: 16px; }
+
+/* ===== 小猫钓鱼 Logo（纯 CSS） ===== */
+header {
+  text-align: center;
+  margin-bottom: 14px;
+}
+.cat-logo {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 8px;
+}
+.cat-face {
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 46px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(251, 146, 60, 0.3);
+  z-index: 2;
+}
+.cat-ear {
+  position: absolute;
+  top: 6px;
+  width: 22px;
+  height: 22px;
+  background: #ffffff;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  z-index: 1;
+}
+.cat-ear.left { left: 12px; transform: rotate(-12deg); }
+.cat-ear.right { right: 12px; transform: rotate(12deg); }
+.cat-eye {
+  position: absolute;
+  top: 26px;
+  width: 6px;
+  height: 7px;
+  background: #292524;
+  border-radius: 50%;
+}
+.cat-eye.left { left: 16px; }
+.cat-eye.right { right: 16px; }
+.cat-nose {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 5px;
+  background: #f472b6;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.cat-mouth {
+  position: absolute;
+  top: 39px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 7px;
+  border-bottom: 2px solid #a8a29e;
+  border-radius: 0 0 12px 12px;
+}
+/* 小鱼竿 + 鱼线（检测时摆动） */
+.fish-line {
+  position: absolute;
+  right: 2px;
+  top: 6px;
+  width: 30px;
+  height: 46px;
+  border-left: 3px solid #92400e;
+  border-radius: 50% 0 0 0;
+  transform: rotate(-18deg);
+  transform-origin: top left;
+  z-index: 3;
+  animation: none;
+}
+.fish-line::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  bottom: 0;
+  width: 3px;
+  height: 16px;
+  background: #a8a29e;
+}
+.hook {
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #78716c;
+  border-radius: 0 0 10px 10px;
+  border-top: none;
+}
+.bait {
+  position: absolute;
+  bottom: -14px;
+  left: -2px;
+  width: 12px;
+  height: 7px;
+  background: #38bdf8;
+  border-radius: 60% 40% 50% 50%;
+}
+header.loading .fish-line {
+  animation: wiggle 0.6s ease-in-out infinite;
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(-30deg); }
+}
+
+header h1 {
+  font-size: 18px;
+  color: #c2410c;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 12px;
+  color: #fdba74;
+  margin-top: 4px;
+}
+
+/* ===== 卡片 ===== */
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(251, 146, 60, 0.18);
+  border: 2px solid #ffedd5;
+}
+.card h2 {
+  font-size: 13px;
+  color: #c2410c;
+  margin-bottom: 8px;
+  border-bottom: 2px dashed #fed7aa;
+  padding-bottom: 6px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.label { font-size: 12px; color: #fdba74; }
+.url {
+  font-size: 12px;
+  color: #c2410c;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result-row { margin: 10px 0; }
+
+/* ===== 等级徽章（小猫表情） ===== */
+.level-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.level-badge.安全 { background: linear-gradient(135deg, #86efac, #4ade80); color: #fff; }
+.level-badge.可疑 { background: linear-gradient(135deg, #fcd34d, #fbbf24); color: #fff; }
+.level-badge.高危 { background: linear-gradient(135deg, #fca5a5, #f87171); color: #fff; }
+.level-badge.未知 { background: linear-gradient(135deg, #d4d4d8, #9ca3af); color: #fff; }
+.level-badge.检测中, .level-badge.非网页 { background: #fed7aa; color: #c2410c; }
+
+.score { font-size: 13px; color: #c2410c; font-weight: bold; }
+
+.reasons {
+  list-style: none;
+  font-size: 12px;
+  color: #9a3412;
+  line-height: 1.8;
+}
+.reasons li {
+  padding: 4px 0;
+  border-top: 1px dashed #fed7aa;
+}
+.reasons li:first-child { border-top: none; }
+
+/* ===== 历史记录 ===== */
+.history {
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+.history li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ffedd5;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.history li:last-child { border-bottom: none; }
+.history .h-host {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 8px;
+  color: #9a3412;
+}
+.history .h-level {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.history .h-level.安全 { background: #dcfce7; color: #16a34a; }
+.history .h-level.可疑 { background: #fef3c7; color: #d97706; }
+.history .h-level.高危 { background: #fee2e2; color: #dc2626; }
+.history .h-level.未知 { background: #f3f4f6; color: #6b7280; }
+.history .empty { color: #fdba74; text-align: center; padding: 14px 0; }
+
+footer { text-align: center; margin-top: 8px; }
+.footer-note { font-size: 11px; color: #fbbf24; }
+
+.trust-btn { display:block; width:100%; margin-top:12px; padding:9px; background:#fff; border:1.5px solid #16a34a; color:#16a34a; border-radius:8px; font-size:13px; cursor:pointer; font-weight:500; } .trust-btn:hover { background:#16a34a; color:#fff; } .trust-btn:disabled { background:#dcfce7; color:#16a34a; border-color:#dcfce7; cursor:default; }

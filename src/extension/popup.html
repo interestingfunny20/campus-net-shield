@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>校园钓鱼检测</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+
+    <!-- 小猫钓鱼头部 -->
+    <header>
+      <div class="cat-logo">
+        <div class="cat-ear left"></div>
+        <div class="cat-ear right"></div>
+        <div class="cat-face">
+          <div class="cat-eye left"></div>
+          <div class="cat-eye right"></div>
+          <div class="cat-nose"></div>
+          <div class="cat-mouth"></div>
+        </div>
+        <div class="fish-line">
+          <span class="hook"></span>
+          <span class="bait"></span>
+        </div>
+      </div>
+      <h1>🐱 小猫钓鱼检测 🎣</h1>
+      <p class="subtitle">闽南科技学院 · 打开网站自动识别</p>
+    </header>
+
+    <!-- 当前网站检测结果 -->
+    <section id="current-panel" class="card">
+      <div class="row">
+        <span class="label">当前网站</span>
+        <span id="current-url" class="url">—</span>
+      </div>
+      <div class="row result-row">
+        <span class="level-badge" id="level-badge">检测中...</span>
+        <span class="score" id="score"></span>
+      </div>
+      <ul id="reason-list" class="reasons"></ul>
+      <button id="trust-btn" class="trust-btn" style="display:none;">✅ 信任此网站（不再提醒）</button>
+    </section>
+
+    <!-- 检测历史 -->
+    <section class="card">
+      <h2>🎣 钓鱼记录</h2>
+      <ul id="history-list" class="history">
+        <li class="empty">暂无记录</li>
+      </ul>
+    </section>
+
+    <footer>
+      <p class="footer-note">面向高校学生 · 闽南科技学院挑战杯作品</p>
+    </footer>
+  </div>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
