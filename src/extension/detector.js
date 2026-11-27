@@ -208,6 +208,14 @@ function detect(urlStr, pageText = "") {
   const rdMain = info.registeredDomain.split(".")[0].toLowerCase();
   for (const [official, name] of Object.entries(OFFICIAL_DOMAINS)) {
     if (info.registeredDomain === official) continue;
+    // 2a. 官方域名被整体拼接进子域名：mku.edu.cn.evil.com / mku.edu.cn.login-verify.top
+    // 官方自身及其正常子域（www.mku.edu.cn）不算
+    const legitSub = info.host === official || info.host.endsWith("." + official);
+    if (!legitSub && (info.host.startsWith(official + ".") || info.host.includes("." + official + "."))) {
+      findings.push(`官方域名「${official}」被拼接进子域名（${info.host}），属于典型仿冒手法`);
+      domainScore += WEIGHTS.domain_visual_similar;
+      continue;
+    }
     const offMain = official.split(".")[0].toLowerCase();
     if (!offMain) continue;
     const sim = similarityScore(rdMain, offMain);

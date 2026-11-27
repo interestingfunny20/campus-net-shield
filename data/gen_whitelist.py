@@ -8,6 +8,9 @@
 
 排除：被钓鱼滥用的托管建站平台与短链服务（weebly / wixsite / 000webhost / blogspot 等），
 这些域名若进白名单会削弱对「托管型钓鱼站」的识别。
+
+注意：本脚本依赖《Phishing.Database》与《Tranco》原始榜单（体积过大未随包提供），
+    仅作取数过程留档；复现指标请直接用已产出的 train2_pos.txt / train2_neg.txt。
 """
 import json
 import sys

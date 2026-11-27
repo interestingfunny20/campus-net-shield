@@ -1,14 +1,12 @@
-# decompyle3 version 3.9.3
-# Python bytecode version base 3.8.0 (3413)
-# Decompiled from: Python 3.13.18 (main, Nov 11 2026, 00:19:14) [MSC v.1944 64 bit (AMD64)]
-# Embedded file name: detector\report.py
 """
 检测报告导出模块
 
-把一次检测结果导出为 txt 或 PDF 报告，方便学生留存记录、比赛展示测试数据。
+把一次检测结果导出为 txt 或 PDF，便于留存与复核。
 PDF 中文用 reportlab 内置 CID 字体（STSong-Light），无需外部字体文件，解决乱码。
 """
-import datetime, os
+import datetime
+import os
+
 
 class ReportExporter:
 
@@ -34,7 +32,6 @@ class ReportExporter:
             lines.append(f'  最终地址   : {fetch.get("final_url", "")}')
             lines.append(f'  重定向次数 : {fetch.get("redirect_count", 0)}')
             lines.append(f'  传输协议   : {"HTTPS（加密）" if fetch.get("is_https") else "HTTP（明文，存在被篡改风险）"}')
-            lines.append(f'  证书状态   : {"正常" if fetch.get("ssl_verified") else "异常"}')
             lines.append(f'  表单输入框 : {fetch.get("form_count", 0)} 个')
         else:
             lines.append(f'  抓取失败   : {fetch.get("error", "未知原因")}（已按域名特征完成基础检测）')
@@ -65,13 +62,19 @@ class ReportExporter:
         把检测报告导出为 PDF（中文正常显示）。
         使用 reportlab 内置 CID 字体 STSong-Light，无需外部字体文件。
         """
-        from reportlab.lib.pagesizes import A4
-        from reportlab.lib.units import mm
         from reportlab.lib import colors
+        from reportlab.lib.pagesizes import A4
+        from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+        from reportlab.lib.units import mm
         from reportlab.pdfbase import pdfmetrics
         from reportlab.pdfbase.cidfonts import UnicodeCIDFont
-        from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-        from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+        from reportlab.platypus import (
+            Paragraph,
+            SimpleDocTemplate,
+            Spacer,
+            Table,
+            TableStyle,
+        )
         pdfmetrics.registerFont(UnicodeCIDFont("STSong-Light"))
         CN_FONT = "STSong-Light"
         styles = getSampleStyleSheet()
@@ -161,8 +164,6 @@ class ReportExporter:
               "重定向次数", f'{fetch.get("redirect_count", 0)} 次'],
              [
               "传输协议", "HTTPS（加密）" if fetch.get("is_https") else "HTTP（明文）"],
-             [
-              "证书状态", "正常" if fetch.get("ssl_verified") else "异常"],
              [
               "表单输入框", f'{fetch.get("form_count", 0)} 个']]
         else:

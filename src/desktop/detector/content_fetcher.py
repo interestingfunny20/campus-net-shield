@@ -1,14 +1,10 @@
-# decompyle3 version 3.9.3
-# Python bytecode version base 3.8.0 (3413)
-# Decompiled from: Python 3.13.18 (main, Nov 11 2026, 00:19:14) [MSC v.1944 64 bit (AMD64)]
-# Embedded file name: detector\content_fetcher.py
 """
 网页内容抓取模块
 
 功能：
     1. 使用 requests + BeautifulSoup 抓取网页标题、正文文本；
     2. 提取表单中的输入框（name / type / placeholder），识别敏感索取字段；
-    3. 提取页面中的外部链接、重定向次数、协议类型、SSL 证书状态；
+    3. 提取页面中的外部链接、重定向次数、协议类型；
     4. 断网 / 页面不可达时返回明确的错误信息，不中断整个检测流程。
 
 返回：
@@ -22,12 +18,14 @@
         final_url     最终跳转地址
         redirect_count 重定向次数
         is_https      是否 HTTPS
-        ssl_verified  SSL 证书是否正常
         status        HTTP 状态码
 """
-import warnings, requests
+import warnings
+
+import requests
 from bs4 import BeautifulSoup
 from urllib3.exceptions import InsecureRequestWarning
+
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 warnings.simplefilter("ignore", InsecureRequestWarning)
 
@@ -46,7 +44,6 @@ class ContentFetcher:
          'forms':[],  'links':[],  'final_url':url, 
          'redirect_count':0, 
          'is_https':(url.lower().startswith)("https://"), 
-         'ssl_verified':True, 
          'status':0}
         try:
             resp = self.session.get(url,
@@ -60,25 +57,26 @@ class ContentFetcher:
             if resp.encoding is None or resp.encoding.lower() == "iso-8859-1":
                 resp.encoding = resp.apparent_encoding
             html = resp.text
-            soup = BeautifulSoup(html, "lxml")
-            if soup.title:
-                if soup.title.string:
-                    result["title"] = soup.title.string.strip()
-                for tag in soup(["script", "style", "noscript", "iframe"]):
-                    tag.decompose()
+            try:
+                soup = BeautifulSoup(html, "lxml")
+            except Exception:
+                # 打包环境若缺 lxml，退回标准库解析器，保证抓取流程不中断
+                soup = BeautifulSoup(html, "html.parser")
+            if soup.title and soup.title.string:
+                result["title"] = soup.title.string.strip()
+            # 正文与表单提取不再依赖页面是否有 <title>，避免无标题页面漏检
+            for tag in soup(["script", "style", "noscript", "iframe"]):
+                tag.decompose()
 
-                result["text"] = soup.get_text(separator=" ", strip=True)[:20000]
-                for form in soup.find_all("form"):
-                    for inp in form.find_all("input"):
-                        name = (inp.get("name") or "").strip()
-                        ptype = (inp.get("type") or "text").strip().lower()
-                        placeholder = (inp.get("placeholder") or "").strip()
-                        if not name:
-                            if placeholder:
-                                pass
-                        result["forms"].append({'name':name, 
-                         'type':ptype, 
-                         'placeholder':placeholder})
+            result["text"] = soup.get_text(separator=" ", strip=True)[:20000]
+            for form in soup.find_all("form"):
+                for inp in form.find_all("input"):
+                    name = (inp.get("name") or "").strip()
+                    ptype = (inp.get("type") or "text").strip().lower()
+                    placeholder = (inp.get("placeholder") or "").strip()
+                    result["forms"].append({'name':name, 
+                     'type':ptype, 
+                     'placeholder':placeholder})
 
             for a in soup.find_all("a", href=True):
                 href = a["href"].strip()
@@ -87,7 +85,6 @@ class ContentFetcher:
             result["ok"] = True
 
         except requests.exceptions.SSLError:
-            result["ssl_verified"] = False
             result["error"] = "SSL证书校验异常（可能存在证书伪造或不受信任证书）"
         except requests.exceptions.Timeout:
             result["error"] = "连接超时，网站响应过慢或不可达"
@@ -105,7 +102,7 @@ class ContentFetcher:
                 elif status == 401:
                     result["error"] = "需要登录认证（401），该页面需要权限才能访问"
                 elif status >= 500:
-                    result["error"] = "服务器内部错误（{status}），网站暂时不可用"
+                    result["error"] = f"服务器内部错误（{status}），网站暂时不可用"
                 else:
                     result["error"] = f"HTTP 错误（{status}），无法正常访问该页面"
             finally:

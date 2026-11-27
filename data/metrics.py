@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """在标注集上计算规则引擎的混淆矩阵与四项指标（可复现）。
 
-数据来源：
-  正样本 = _work/pos_results.json（Phishing.Database ACTIVE 在线钓鱼域名，100 条）
-  负样本 = _work/neg_results.json（官方/知名/高校/政府正常站点，102 条）
+数据来源：exe_202_results.json（exe 批量实测结果，前 100 条为正样本、
+  后 102 条为负样本；正样本取自 Phishing.Database ACTIVE 在线钓鱼域名，
+  负样本为官方/知名/高校/政府正常站点）
 判定口径：预测为正 = 可疑 / 高危；预测为负 = 安全 / 未知
 """
 import json
 from pathlib import Path
 
 W = Path(__file__).resolve().parent
-POS = json.load(open(W / "pos_results.json", encoding="utf-8"))
-NEG = json.load(open(W / "neg_results.json", encoding="utf-8"))
+ALL = json.load(open(W / "exe_202_results.json", encoding="utf-8"))
+POS, NEG = ALL[:100], ALL[100:]
 
 POS_LABEL = 1
 NEG_LABEL = 0

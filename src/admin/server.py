@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 网安老师 Web 后台：拦截记录、热门钓鱼类型、每周趋势
 
@@ -8,7 +7,8 @@
 import os
 import sqlite3
 from datetime import datetime, timedelta
-from flask import Flask, request, jsonify, render_template_string
+
+from flask import Flask, jsonify, render_template_string, request
 
 app = Flask(__name__)
 DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "guard.db")
@@ -185,7 +185,8 @@ def stats():
 @app.route("/api/export.csv")
 def export_csv():
     """导出全部记录为 CSV"""
-    import csv, io
+    import csv
+    import io
     conn = sqlite3.connect(DB_PATH)
     c = conn.cursor()
     c.execute("SELECT url, host, level, score, reason, source, reported_at FROM reports ORDER BY id DESC")
@@ -453,9 +454,9 @@ DASHBOARD_HTML = """
       </div>
     </div>
     <div class="card">
-      <h3>关于 <span class="hint">v1.0</span></h3>
+      <h3>关于 <span class="hint">v2.3</span></h3>
       <p style="font-size:14px;line-height:2;color:#374151;">
-        校园钓鱼网页检测助手 · 闽南科技学院 2026 挑战杯 B 类作品<br>
+        校园网盾 · 高校钓鱼网页轻量检测助手 v2.3<br>
         核心算法：Levenshtein 域名形近相似度 + 规则引擎 + 随机森林分类器<br>
         数据存储：本地 SQLite，所有记录不出校园网
       </p>

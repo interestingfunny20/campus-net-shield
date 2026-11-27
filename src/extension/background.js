@@ -48,8 +48,8 @@ function levelEmoji(level) {
   return "🟢";
 }
 
+/** 从页面文本算内容风险分（0~40） */
 function contentScore(title, bodyText) {
-  /** 从页面文本算内容风险分（0~40） */
   const text = (title + " " + bodyText).toLowerCase();
   let score = 0;
   const reasons = [];
@@ -62,8 +62,8 @@ function contentScore(title, bodyText) {
   return { score: Math.min(score, 40), reasons };
 }
 
+/** 融合域名分与内容分，重算等级 */
 function fuseResult(domainResult, contentScore) {
-  /** 融合域名分 + 内容分，重算等级 */
   const total = Math.min(domainResult.score + contentScore.score, 100);
   let level = "安全";
   if (total > 65) level = "高危";
@@ -72,8 +72,8 @@ function fuseResult(domainResult, contentScore) {
   return { ...domainResult, score: total, level, reasons: allReasons };
 }
 
+/** 上报到 Web 后台，失败时静默跳过 */
 function reportToServer(entry) {
-  /** 上报到 Web 后台（失败静默忽略） */
   try {
     fetch(`${REPORT_SERVER}/api/report`, {
       method: "POST",

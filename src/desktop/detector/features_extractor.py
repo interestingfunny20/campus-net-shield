@@ -1,7 +1,3 @@
-# decompyle3 version 3.9.3
-# Python bytecode version base 3.8.0 (3413)
-# Decompiled from: Python 3.13.18 (main, Nov 11 2026, 00:19:14) [MSC v.1944 64 bit (AMD64)]
-# Embedded file name: detector\features_extractor.py
 """
 URL 特征提取模块（供 ML 分类器使用）
 
@@ -9,7 +5,9 @@ URL 特征提取模块（供 ML 分类器使用）
 共 12 个特征，覆盖域名结构、字符统计、可疑度指标。
 """
 import re
+
 from .domain_similarity import similarity_score
+
 SUSPICIOUS_TLDS = {
  "tk", "ml", "ga", "cf", "gq", "xyz", "top", "icu", "vip", "site",
  "club", "online", "fun", "link", "live", "rest", "monster", "review", "stream"}
@@ -37,14 +35,14 @@ def extract_features(url):
         tld = parts[-1] if len(parts) >= 2 else ""
         host_len = len(host)
         main_len = len(main_name)
-        digit_count = sum((1 for c in host if c.isdigit()))
+        digit_count = sum(1 for c in host if c.isdigit())
         digit_ratio = digit_count / max(host_len, 1)
-        special_count = sum((1 for c in host if c in "-_"))
+        special_count = sum(1 for c in host if c in "-_")
         special_ratio = special_count / max(host_len, 1)
         subdomain_depth = len(subdomain_parts)
         has_suspicious_sub = 0
         for part in subdomain_parts:
-            if any((kw in part.lower() for kw in SUSPICIOUS_SUBDOMAINS)):
+            if any(kw in part.lower() for kw in SUSPICIOUS_SUBDOMAINS):
                 has_suspicious_sub = 1
                 break
 
@@ -52,7 +50,7 @@ def extract_features(url):
         sim = similarity_score(main_name, OFFICIAL_DOMAIN.split(".")[0])
         starts_with_official = 1 if main_name.startswith(OFFICIAL_DOMAIN.split(".")[0]) else 0
         hyphen_count = host.count("-")
-        vowels = sum((1 for c in host.lower() if c in "aeiou"))
+        vowels = sum(1 for c in host.lower() if c in "aeiou")
         vowel_ratio = vowels / max(host_len, 1)
         return {
           'host_len': host_len,

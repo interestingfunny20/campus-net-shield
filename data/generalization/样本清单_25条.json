@@ -1,0 +1,628 @@
+[
+  {
+    "school": "厦门大学",
+    "official": "xmu.edu.cn",
+    "technique": "可疑域名后缀",
+    "url": "http://xmu-edu.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「xmu-edu.xyz」以高校官方名「xmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「xmu-edu.xyz」以高校官方名「xmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "厦门大学",
+    "official": "xmu.edu.cn",
+    "technique": "诱导子域",
+    "url": "http://login.xmu-edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「xmu-edu.cn」以高校官方名「xmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      },
+      "stage2": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「xmu-edu.cn」以高校官方名「xmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      }
+    }
+  },
+  {
+    "school": "厦门大学",
+    "official": "xmu.edu.cn",
+    "technique": "官方域名拼接",
+    "url": "http://xmu.edu.cn.verify.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「xmu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「xmu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "厦门大学",
+    "official": "xmu.edu.cn",
+    "technique": "形近替换",
+    "url": "http://xrnu.edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 80,
+        "level": "高危",
+        "reasons": [
+          "域名「xrnu.edu.cn」与高校官方域名「xmu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站",
+          "域名「xrnu.edu.cn」与高校官方域名「jmu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 80,
+        "level": "高危",
+        "reasons": [
+          "域名「xrnu.edu.cn」与高校官方域名「xmu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站",
+          "域名「xrnu.edu.cn」与高校官方域名「jmu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+        ]
+      }
+    }
+  },
+  {
+    "school": "福州大学",
+    "official": "fzu.edu.cn",
+    "technique": "可疑域名后缀",
+    "url": "http://fzu-edu.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「fzu-edu.xyz」以高校官方名「fzu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「fzu-edu.xyz」以高校官方名「fzu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "福州大学",
+    "official": "fzu.edu.cn",
+    "technique": "诱导子域",
+    "url": "http://login.fzu-edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「fzu-edu.cn」以高校官方名「fzu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      },
+      "stage2": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「fzu-edu.cn」以高校官方名「fzu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      }
+    }
+  },
+  {
+    "school": "福州大学",
+    "official": "fzu.edu.cn",
+    "technique": "官方域名拼接",
+    "url": "http://fzu.edu.cn.verify.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「fzu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「fzu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "福州大学",
+    "official": "fzu.edu.cn",
+    "technique": "形近替换",
+    "url": "http://f2u.edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「f2u.edu.cn」与高校官方域名「fzu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「f2u.edu.cn」与高校官方域名「fzu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+        ]
+      }
+    }
+  },
+  {
+    "school": "华侨大学",
+    "official": "hqu.edu.cn",
+    "technique": "可疑域名后缀",
+    "url": "http://hqu-edu.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「hqu-edu.xyz」以高校官方名「hqu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「hqu-edu.xyz」以高校官方名「hqu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "华侨大学",
+    "official": "hqu.edu.cn",
+    "technique": "诱导子域",
+    "url": "http://login.hqu-edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「hqu-edu.cn」以高校官方名「hqu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      },
+      "stage2": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「hqu-edu.cn」以高校官方名「hqu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      }
+    }
+  },
+  {
+    "school": "华侨大学",
+    "official": "hqu.edu.cn",
+    "technique": "官方域名拼接",
+    "url": "http://hqu.edu.cn.verify.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「hqu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「hqu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "华侨大学",
+    "official": "hqu.edu.cn",
+    "technique": "形近替换",
+    "url": "http://hgu.edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「hgu.edu.cn」与高校官方域名「hqu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「hgu.edu.cn」与高校官方域名「hqu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+        ]
+      }
+    }
+  },
+  {
+    "school": "集美大学",
+    "official": "jmu.edu.cn",
+    "technique": "可疑域名后缀",
+    "url": "http://jmu-edu.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「jmu-edu.xyz」以高校官方名「jmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「jmu-edu.xyz」以高校官方名「jmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "集美大学",
+    "official": "jmu.edu.cn",
+    "technique": "诱导子域",
+    "url": "http://login.jmu-edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「jmu-edu.cn」以高校官方名「jmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      },
+      "stage2": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「jmu-edu.cn」以高校官方名「jmu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      }
+    }
+  },
+  {
+    "school": "集美大学",
+    "official": "jmu.edu.cn",
+    "technique": "官方域名拼接",
+    "url": "http://jmu.edu.cn.verify.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「jmu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「jmu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "集美大学",
+    "official": "jmu.edu.cn",
+    "technique": "形近替换",
+    "url": "http://jrnu.edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 80,
+        "level": "高危",
+        "reasons": [
+          "域名「jrnu.edu.cn」与高校官方域名「xmu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站",
+          "域名「jrnu.edu.cn」与高校官方域名「jmu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 80,
+        "level": "高危",
+        "reasons": [
+          "域名「jrnu.edu.cn」与高校官方域名「xmu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站",
+          "域名「jrnu.edu.cn」与高校官方域名「jmu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+        ]
+      }
+    }
+  },
+  {
+    "school": "泉州师范学院",
+    "official": "qznu.edu.cn",
+    "technique": "可疑域名后缀",
+    "url": "http://qznu-edu.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「qznu-edu.xyz」以高校官方名「qznu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 50,
+        "level": "可疑",
+        "reasons": [
+          "域名「qznu-edu.xyz」以高校官方名「qznu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "泉州师范学院",
+    "official": "qznu.edu.cn",
+    "technique": "诱导子域",
+    "url": "http://login.qznu-edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「qznu-edu.cn」以高校官方名「qznu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      },
+      "stage2": {
+        "score": 55,
+        "level": "可疑",
+        "reasons": [
+          "域名「qznu-edu.cn」以高校官方名「qznu」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+          "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+        ]
+      }
+    }
+  },
+  {
+    "school": "泉州师范学院",
+    "official": "qznu.edu.cn",
+    "technique": "官方域名拼接",
+    "url": "http://qznu.edu.cn.verify.xyz",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「qznu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      },
+      "stage2": {
+        "score": 65,
+        "level": "可疑",
+        "reasons": [
+          "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+          "子域名中嵌入了官方域名「qznu.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+          "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+        ]
+      }
+    }
+  },
+  {
+    "school": "泉州师范学院",
+    "official": "qznu.edu.cn",
+    "technique": "形近替换",
+    "url": "http://q2nu.edu.cn",
+    "label": 1,
+    "results": {
+      "stage1": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「q2nu.edu.cn」与高校官方域名「qznu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「q2nu.edu.cn」与高校官方域名「qznu.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+        ]
+      }
+    }
+  },
+  {
+    "school": "对照（他校真实域名）",
+    "official": "-",
+    "technique": "极相似对照",
+    "url": "http://xmut.edu.cn",
+    "label": 0,
+    "results": {
+      "stage1": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「xmut.edu.cn」与高校官方域名「xmu.edu.cn」主名相似度 75/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 0,
+        "level": "未知",
+        "reasons": [
+          "页面抓取失败，仅完成域名基础检测",
+          "离线评测：未抓取页面内容（域名层口径）"
+        ]
+      }
+    }
+  },
+  {
+    "school": "对照（他校真实域名）",
+    "official": "-",
+    "technique": "极相似对照",
+    "url": "http://jnu.edu.cn",
+    "label": 0,
+    "results": {
+      "stage1": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「jnu.edu.cn」与高校官方域名「jmu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 0,
+        "level": "未知",
+        "reasons": [
+          "页面抓取失败，仅完成域名基础检测",
+          "离线评测：未抓取页面内容（域名层口径）"
+        ]
+      }
+    }
+  },
+  {
+    "school": "对照（他校真实域名）",
+    "official": "-",
+    "technique": "极相似对照",
+    "url": "http://fjut.edu.cn",
+    "label": 0,
+    "results": {
+      "stage1": {
+        "score": 0,
+        "level": "未知",
+        "reasons": [
+          "页面抓取失败，仅完成域名基础检测",
+          "离线评测：未抓取页面内容（域名层口径）"
+        ]
+      },
+      "stage2": {
+        "score": 0,
+        "level": "未知",
+        "reasons": [
+          "页面抓取失败，仅完成域名基础检测",
+          "离线评测：未抓取页面内容（域名层口径）"
+        ]
+      }
+    }
+  },
+  {
+    "school": "对照（他校真实域名）",
+    "official": "-",
+    "technique": "极相似对照",
+    "url": "http://mnnu.edu.cn",
+    "label": 0,
+    "results": {
+      "stage1": {
+        "score": 0,
+        "level": "未知",
+        "reasons": [
+          "页面抓取失败，仅完成域名基础检测",
+          "离线评测：未抓取页面内容（域名层口径）"
+        ]
+      },
+      "stage2": {
+        "score": 0,
+        "level": "未知",
+        "reasons": [
+          "页面抓取失败，仅完成域名基础检测",
+          "离线评测：未抓取页面内容（域名层口径）"
+        ]
+      }
+    }
+  },
+  {
+    "school": "对照（他校真实域名）",
+    "official": "-",
+    "technique": "极相似对照",
+    "url": "http://hnu.edu.cn",
+    "label": 0,
+    "results": {
+      "stage1": {
+        "score": 40,
+        "level": "可疑",
+        "reasons": [
+          "域名「hnu.edu.cn」与高校官方域名「hqu.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+        ]
+      },
+      "stage2": {
+        "score": 0,
+        "level": "未知",
+        "reasons": [
+          "页面抓取失败，仅完成域名基础检测",
+          "离线评测：未抓取页面内容（域名层口径）"
+        ]
+      }
+    }
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "阶段": "2 扩校+他校真实域名排除表",
+  "official_domains": {
+    "mku.edu.cn": "闽南科技学院",
+    "xmu.edu.cn": "厦门大学",
+    "fzu.edu.cn": "福州大学",
+    "hqu.edu.cn": "华侨大学",
+    "jmu.edu.cn": "集美大学",
+    "qznu.edu.cn": "泉州师范学院"
+  },
+  "known_safe_domains_新增": [
+    "xmut.edu.cn",
+    "jnu.edu.cn",
+    "fjut.edu.cn",
+    "mnnu.edu.cn",
+    "hnu.edu.cn"
+  ],
+  "summary": {
+    "hit": 20,
+    "n": 25,
+    "dist": {
+      "可疑": 18,
+      "高危": 2,
+      "未知": 5
+    }
+  }
+}

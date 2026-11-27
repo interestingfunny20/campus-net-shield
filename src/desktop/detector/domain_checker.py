@@ -1,5 +1,5 @@
 """
-域名特征检测模块（依据反编译产物校正后的可运行版本）
+域名特征检测模块
 
 功能：
     1. 解析 URL，提取协议、主机、子域名、注册域名、后缀；
@@ -39,33 +39,51 @@ class DomainChecker:
             return False
 
     def parse_url(self, url):
-        """解析 URL，返回结构化域名信息；无法解析返回 None"""
+        """解析 URL，返回结构化域名信息；无法解析返回 None。
+
+        先用 urlsplit 取主机名、用 ipaddress 判断是否 IP 直连，再决定是否交给
+        tldextract 解析；所有域名类字段统一转小写，避免大小写差异导致比对失效。
+        """
         if not (url and url.strip()):
             return None
         url = url.strip()
-        if not re.match(r"^(https?://)", url, re.I):
+        if not re.match(r"^(https?://)", url, re.IGNORECASE):
             url = "http://" + url
         try:
-            ext = tldextract.extract(url)
+            from urllib.parse import urlsplit
+            parts = urlsplit(url)
+            raw_host = (parts.hostname or "").lower().strip(".")
         except Exception:
             return None
-        host = ext.fqdn or ""
-        if not host:
+        if not raw_host:
             return None
-        is_ip = self._is_ip(host)
-        registered_domain = "" if is_ip else ext.registered_domain
-        suffix = "" if is_ip else ext.suffix
-        port = ""
-        m = re.search(r"^(https?://[^/]+)", url, re.I)
-        if m:
-            pm = re.search(r":(\d+)$", m.group(1))
-            if pm:
-                port = pm.group(1)
+
+        is_ip = self._is_ip(raw_host)
+        if is_ip:
+            # IP 直连没有域名层级，tldextract 对纯 IP 的结果不可靠，直接跳过
+            host, subdomain, registered_domain, suffix = raw_host, "", "", ""
+        else:
+            try:
+                ext = tldextract.extract(url)
+            except Exception:
+                return None
+            host = (ext.fqdn or "").lower().strip(".")
+            if not host:
+                return None
+            subdomain = (ext.subdomain or "").lower()
+            registered_domain = (ext.registered_domain or "").lower()
+            suffix = (ext.suffix or "").lower()
+
+        try:
+            port = str(parts.port) if parts.port else ""
+        except Exception:
+            port = ""
+
         return {
             "protocol": "https" if url.lower().startswith("https://") else "http",
             "host": host,
             "port": port,
-            "subdomain": ext.subdomain or "",
+            "subdomain": subdomain,
             "registered_domain": registered_domain,
             "suffix": suffix,
             "is_ip": is_ip,

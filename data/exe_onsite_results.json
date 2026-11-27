@@ -1,0 +1,275 @@
+[
+ {
+  "domain": "http://mku-edu.cn",
+  "url": "http://mku-edu.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.1
+ },
+ {
+  "domain": "http://mku-edu.com",
+  "url": "http://mku-edu.com",
+  "level": "可疑",
+  "score": 40,
+  "cost": 1.16
+ },
+ {
+  "domain": "http://mkuedu.cn",
+  "url": "http://mkuedu.cn",
+  "level": "未知",
+  "score": 0,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku.edu.com",
+  "url": "http://mku.edu.com",
+  "level": "安全",
+  "score": 0,
+  "cost": 2.33
+ },
+ {
+  "domain": "http://mkv.edu.cn",
+  "url": "http://mkv.edu.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.19
+ },
+ {
+  "domain": "http://rnku.edu.cn",
+  "url": "http://rnku.edu.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.16
+ },
+ {
+  "domain": "http://mkujwc.cn",
+  "url": "http://mkujwc.cn",
+  "level": "未知",
+  "score": 0,
+  "cost": 0.07
+ },
+ {
+  "domain": "http://www.mku-edu.cn",
+  "url": "http://www.mku-edu.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku-edu.top",
+  "url": "http://mku-edu.top",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.08
+ },
+ {
+  "domain": "http://mku-edu.xyz",
+  "url": "http://mku-edu.xyz",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.32
+ },
+ {
+  "domain": "http://mku-edu.icu",
+  "url": "http://mku-edu.icu",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.21
+ },
+ {
+  "domain": "http://mku-edu.vip",
+  "url": "http://mku-edu.vip",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku-edu.club",
+  "url": "http://mku-edu.club",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.07
+ },
+ {
+  "domain": "http://mku-edu.online",
+  "url": "http://mku-edu.online",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.23
+ },
+ {
+  "domain": "http://mku-edu.site",
+  "url": "http://mku-edu.site",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.29
+ },
+ {
+  "domain": "http://mku-edu.link",
+  "url": "http://mku-edu.link",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.04
+ },
+ {
+  "domain": "http://mku-edu.monster",
+  "url": "http://mku-edu.monster",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.03
+ },
+ {
+  "domain": "http://mku-edu.stream",
+  "url": "http://mku-edu.stream",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.05
+ },
+ {
+  "domain": "http://mku-edu.rest",
+  "url": "http://mku-edu.rest",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.26
+ },
+ {
+  "domain": "http://jw.mku-edu.cn",
+  "url": "http://jw.mku-edu.cn",
+  "level": "可疑",
+  "score": 55,
+  "cost": 0.05
+ },
+ {
+  "domain": "http://jwc.mku-edu.cn",
+  "url": "http://jwc.mku-edu.cn",
+  "level": "可疑",
+  "score": 55,
+  "cost": 0.07
+ },
+ {
+  "domain": "http://login.mku-edu.cn",
+  "url": "http://login.mku-edu.cn",
+  "level": "可疑",
+  "score": 55,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku-login.cn",
+  "url": "http://mku-login.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.05
+ },
+ {
+  "domain": "http://mku-jwc.cn",
+  "url": "http://mku-jwc.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku-xsc.cn",
+  "url": "http://mku-xsc.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku-pay.cn",
+  "url": "http://mku-pay.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.03
+ },
+ {
+  "domain": "http://mku-grant.cn",
+  "url": "http://mku-grant.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku-subsidy.top",
+  "url": "http://mku-subsidy.top",
+  "level": "可疑",
+  "score": 50,
+  "cost": 0.08
+ },
+ {
+  "domain": "http://mku-jw.cn",
+  "url": "http://mku-jw.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.06
+ },
+ {
+  "domain": "http://mku.edu.cn.login-verify.top",
+  "url": "http://mku.edu.cn.login-verify.top",
+  "level": "可疑",
+  "score": 65,
+  "cost": 0.08
+ },
+ {
+  "domain": "http://mku.edu.cn.verify.xyz",
+  "url": "http://mku.edu.cn.verify.xyz",
+  "level": "可疑",
+  "score": 65,
+  "cost": 0.43
+ },
+ {
+  "domain": "http://mku.edu.cn.evil.com",
+  "url": "http://mku.edu.cn.evil.com",
+  "level": "可疑",
+  "score": 55,
+  "cost": 0.1
+ },
+ {
+  "domain": "http://mku.edu.cn.secure-login.com",
+  "url": "http://mku.edu.cn.secure-login.com",
+  "level": "可疑",
+  "score": 55,
+  "cost": 0.01
+ },
+ {
+  "domain": "http://mku.edu.cn.account-update.club",
+  "url": "http://mku.edu.cn.account-update.club",
+  "level": "可疑",
+  "score": 65,
+  "cost": 0.05
+ },
+ {
+  "domain": "http://xkmu.edu.cn",
+  "url": "http://xkmu.edu.cn",
+  "level": "未知",
+  "score": 0,
+  "cost": 0.14
+ },
+ {
+  "domain": "http://mkx.edu.cn",
+  "url": "http://mkx.edu.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.17
+ },
+ {
+  "domain": "http://nkmu.edu.cn",
+  "url": "http://nkmu.edu.cn",
+  "level": "未知",
+  "score": 0,
+  "cost": 0.15
+ },
+ {
+  "domain": "http://mku2.edu.cn",
+  "url": "http://mku2.edu.cn",
+  "level": "可疑",
+  "score": 40,
+  "cost": 0.18
+ },
+ {
+  "domain": "http://jnku.edu.cn",
+  "url": "http://jnku.edu.cn",
+  "level": "未知",
+  "score": 0,
+  "cost": 0.15
+ }
+]

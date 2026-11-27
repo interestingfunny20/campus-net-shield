@@ -1,24 +1,47 @@
-# decompyle3 version 3.9.3
-# Python bytecode version base 3.8.0 (3413)
-# Decompiled from: Python 3.13.18 (main, Nov 11 2026, 00:19:14) [MSC v.1944 64 bit (AMD64)]
-# Embedded file name: ui.py
 """
-GUI 可视化交互界面（PyQt5）—— 精致美化版
+PyQt5 图形界面
 
-设计：
-    - 程序盾牌图标（QPainter 绘制，无外部图片依赖）
-    - 深蓝渐变头部 + 浅色渐变背景
-    - 风险等级渐变徽章（绿/橙/红）、风险分进度条
-    - 检测时进度条转圈动画，结果即时回填
-    - 保持核心控件命名稳定，兼容自动化冒烟测试
+    - 盾牌图标与雷达图均由 QPainter 绘制，不依赖外部图片
+    - 顶部渐变条、风险等级徽章、风险分进度条
+    - 检测在子线程执行，完成后把结果回填主线程
+    - 主要控件保留固定 objectName，便于界面自动化测试读取
 """
 import os
-from PyQt5.QtCore import Qt, QThread, QPointF, pyqtSignal, QRectF
-from PyQt5.QtGui import QFont, QIcon, QPixmap, QPainter, QColor, QLinearGradient, QPainterPath, QPen, QBrush
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLineEdit, QPushButton, QLabel, QTextBrowser, QMessageBox, QFileDialog, QFrame, QStatusBar, QProgressBar
+
 from detector.engine import Detector
 from detector.report import ReportExporter
 from detector.report_uploader import upload_async
+from PyQt5.QtCore import QPointF, QRectF, Qt, QThread, pyqtSignal
+from PyQt5.QtGui import (
+    QBrush,
+    QColor,
+    QFont,
+    QFontMetricsF,
+    QIcon,
+    QLinearGradient,
+    QPainter,
+    QPainterPath,
+    QPen,
+    QPixmap,
+)
+from PyQt5.QtWidgets import (
+    QApplication,
+    QFileDialog,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QMainWindow,
+    QMessageBox,
+    QProgressBar,
+    QPushButton,
+    QSizePolicy,
+    QStatusBar,
+    QTextBrowser,
+    QVBoxLayout,
+    QWidget,
+)
+
 APP_VERSION = "v2.3"
 
 class RadarChartWidget(QWidget):
@@ -28,8 +51,10 @@ class RadarChartWidget(QWidget):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.setMinimumSize(240, 240)
-        self.setMaximumSize(340, 340)
+        # 允许随卡片剩余空间自由伸缩，避免全屏时控件比卡片还大而被裁切
+        self.setMinimumSize(140, 140)
+        self.setMaximumSize(600, 600)
+        self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self._values = [0.5] * 8
         self._score = 0
 
@@ -43,9 +68,13 @@ class RadarChartWidget(QWidget):
         p = QPainter(self)
         p.setRenderHint(QPainter.Antialiasing)
         w, h = self.width(), self.height()
-        cx, cy = w / 2, h / 2 + 5
-        # 预留 68px 给四周文字标签，避免标签被控件边界裁掉
-        radius = min(w, h) / 2 - 68
+        cx, cy = w / 2, h / 2 + 8
+        # 字号随控件宽度收放，再按实际字形宽度预留横向空间，保证 @ 这类窄字符也不被裁
+        label_fs = max(7, min(10, int(w / 36)))
+        fm_top = QFontMetricsF(QFont("Microsoft YaHei", label_fs))
+        max_lw = max(fm_top.horizontalAdvance(t) for t in self.DIM_LABELS) + max(4.0, label_fs * 0.4)
+        # 顶部留出标题高度（约 30px）+ 标签高度，避免标题压住「域名长度」
+        radius = max(30, min(w / 2 - (max_lw + 6), h / 2 - 24, cy - 54))
         n = 8
         for layer in range(1, 4):
             r = radius * layer / 3
@@ -54,7 +83,7 @@ class RadarChartWidget(QWidget):
                 angle = 2 * math.pi * i / n - math.pi / 2
                 points.append(QPointF(cx + r * math.cos(angle), cy + r * math.sin(angle)))
 
-            pen = QPen(QColor(200, 200, 220, 80), 1)
+            pen = QPen(QColor(190, 190, 215, 120), 1)
             p.setPen(pen)
             p.setBrush(Qt.NoBrush)
             path = QPainterPath()
@@ -68,34 +97,41 @@ class RadarChartWidget(QWidget):
         for i in range(n):
             angle = 2 * math.pi * i / n - math.pi / 2
             end = QPointF(cx + radius * math.cos(angle), cy + radius * math.sin(angle))
-            p.setPen(QPen(QColor(180, 180, 200, 100), 1))
+            p.setPen(QPen(QColor(175, 175, 200, 130), 1))
             p.drawLine(QPointF(cx, cy), end)
 
         p.setPen(QColor(80, 80, 100))
-        label_fs = max(7, min(9, int(w / 36)))
         p.setFont(QFont("Microsoft YaHei", label_fs))
+        show_labels = radius >= 22
+        # 按实际字形宽度排版：含 @ 等窄字符的标签不再被固定宽度矩形裁掉
+        fm = fm_top
         for i in range(n):
+            if not show_labels:
+                break
             angle = 2 * math.pi * i / n - math.pi / 2
             cos_a = math.cos(angle)
             sin_a = math.sin(angle)
             lx = cx + (radius + 4) * cos_a
             ly = cy + (radius + 4) * sin_a
             text = self.DIM_LABELS[i]
+            tw = fm.horizontalAdvance(text) + max(4.0, label_fs * 0.4)
+            th = fm.height() + 2
             if abs(cos_a) < 0.3:
-                rect = QRectF(cx - 32, ly - (12 if sin_a > 0 else 0), 64, 16)
+                box_x = min(max(1, cx - tw / 2), max(1, w - tw - 1))
+                box_y = ly - th - 1 if sin_a < 0 else ly + 1
                 align = Qt.AlignHCenter | Qt.AlignVCenter
-            elif cos_a > 0:
-                rect = QRectF(lx, ly - 8, 64, 16)
-                align = Qt.AlignLeft | Qt.AlignVCenter
             else:
-                rect = QRectF(lx - 64, ly - 8, 64, 16)
-                align = Qt.AlignRight | Qt.AlignVCenter
-            p.drawText(rect, align, text)
+                box_x = min(lx, max(1, w - tw - 1)) if cos_a > 0 else max(1, lx - tw)
+                box_y = ly - th / 2
+                align = (Qt.AlignLeft if cos_a > 0 else Qt.AlignRight) | Qt.AlignVCenter
+            box_y = min(max(1, box_y), max(1, h - th - 1))
+            p.drawText(QRectF(box_x, box_y, tw, th), align | Qt.TextDontClip, text)
 
         data_points = []
         for i in range(n):
             angle = 2 * math.pi * i / n - math.pi / 2
-            r = radius * self._values[i]
+            # 以 22% 为显示基线：全 0 的维度也能画出完整八边形，不再塌成几根射线
+            r = radius * (0.22 + 0.78 * self._values[i])
             data_points.append(QPointF(cx + r * math.cos(angle), cy + r * math.sin(angle)))
 
         if self._score >= 66:
@@ -116,9 +152,14 @@ class RadarChartWidget(QWidget):
 
         data_path.closeSubpath()
         p.drawPath(data_path)
+        # 每个顶点画一个小圆点，低值维度也能看出位置
+        p.setBrush(QBrush(line_color))
+        p.setPen(Qt.NoPen)
+        for pt in data_points:
+            p.drawEllipse(pt, 2.5, 2.5)
         p.setPen(QColor(60, 60, 80))
         p.setFont(QFont("Microsoft YaHei", 9, QFont.Bold))
-        p.drawText(QRectF(0, 5, w, 20), Qt.AlignCenter, "📊 URL 特征雷达图")
+        p.drawText(QRectF(0, 4, w, 22), Qt.AlignHCenter | Qt.AlignTop | Qt.TextDontClip, "📊 URL 特征雷达图")
         p.end()
 
 
@@ -132,8 +173,6 @@ LEVEL_CHUNK = {
   '可疑': "qlineargradient(x1:0,y1:0,x2:1,y2:0, stop:0 #fcd34d, stop:1 #fbbf24)",
   '高危': "qlineargradient(x1:0,y1:0,x2:1,y2:0, stop:0 #fca5a5, stop:1 #f87171)",
   '未知': "qlineargradient(x1:0,y1:0,x2:1,y2:0, stop:0 #d4d4d8, stop:1 #9ca3af)"}
-LEVEL_ICON = {
-  '安全': "🐱", '可疑': "😼", '高危': "🙀", '未知': "🐾"}
 
 class DetectWorker(QThread):
     __doc__ = "后台检测线程，避免阻塞界面"
@@ -157,7 +196,7 @@ class DetectWorker(QThread):
              'fetch':{'ok':False, 
               'error':str(e)[:150],  'title':"",  'final_url':self.url, 
               'redirect_count':0,  'is_https':False, 
-              'ssl_verified':True,  'status':0,  'form_count':0}}
+              'status':0,  'form_count':0}}
             self.finished.emit(report)
         else:
             self.finished.emit(report)
@@ -168,7 +207,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle(f"校园钓鱼网页检测助手 {APP_VERSION} · 闽南科技学院挑战杯参赛作品")
-        self.setWindowIcon(QIcon(self._make_logo()))
+        self.setWindowIcon(self._best_icon())
         # 初始尺寸按屏幕可用区域自适应：小屏或 125% 缩放时窗口不会超出屏幕、右侧不再被裁掉
         try:
             scr = QApplication.primaryScreen().availableGeometry()
@@ -183,11 +222,36 @@ class MainWindow(QMainWindow):
             self.move(scr.x() + max(0, (scr.width() - max(want_w, 760)) // 2),
                       scr.y() + max(0, (scr.height() - max(want_h, 560)) // 2))
         self._detail_fs = 0
+        self._style_scale = -1.0
+        self._fitted = False
+        self._chunk_qss = "qlineargradient(x1:0,y1:0,x2:1,y2:0, stop:0 #fdba74, stop:1 #fb923c)"
         self.worker = None
         self._last_report = None
         self._build_ui()
-        self._apply_style()
-        self._apply_detail_font()
+        self._apply_all()
+
+    @classmethod
+    def _icon_file(cls):
+        """优先用带多尺寸帧的图标文件，找不到再退回画笔生成的小猫 Logo。"""
+        try:
+            import sys
+
+            base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+            for rel in ("icon.ico", os.path.join("assets", "icon.ico")):
+                path = os.path.join(base, rel)
+                if os.path.exists(path):
+                    return path
+        except Exception:
+            pass
+        return None
+
+    def _best_icon(self):
+        path = self._icon_file()
+        if path:
+            ico = QIcon(path)
+            if not ico.isNull():
+                return ico
+        return QIcon(self._make_logo())
 
     @staticmethod
     def _make_logo(size=72):
@@ -205,7 +269,6 @@ class MainWindow(QMainWindow):
         w, h = size, size
         p.setBrush(QColor("#ffffff"))
         p.drawEllipse(QPointF(w * 0.5, h * 0.55), size * 0.28, size * 0.25)
-        ear_pen = Qt.NoPen
         p.setBrush(QColor("#ffffff"))
         path_l = QPainterPath()
         path_l.moveTo(w * 0.28, h * 0.42)
@@ -257,23 +320,48 @@ class MainWindow(QMainWindow):
         p.end()
         return pm
 
+    def _fit_to_screen(self):
+        """首次显示时把窗口完整塞进屏幕可用区域，避免左侧/底部内容被屏幕边缘裁掉。"""
+        try:
+            scr = QApplication.primaryScreen().availableGeometry()
+            fg = self.frameGeometry()
+            if fg.width() > scr.width() or fg.height() > scr.height():
+                self.resize(min(fg.width(), scr.width() - 2), min(fg.height(), scr.height() - 2))
+                fg = self.frameGeometry()
+            x = min(max(fg.x(), scr.x()), scr.x() + scr.width() - fg.width())
+            y = min(max(fg.y(), scr.y()), scr.y() + scr.height() - fg.height())
+            self.move(max(x, scr.x()), max(y, scr.y()))
+        except Exception:
+            pass
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        if not getattr(self, "_fitted", False):
+            self._fitted = True
+            self._fit_to_screen()
+
     def _build_ui(self):
         central = QWidget()
         self.setCentralWidget(central)
         root = QVBoxLayout(central)
+        self._root_lay = root
         root.setContentsMargins(20, 20, 20, 16)
         root.setSpacing(14)
         header = QFrame()
         header.setObjectName("header")
         header.setFixedHeight(96)
+        self._header = header
         hl = QHBoxLayout(header)
+        self._hlay = hl
         hl.setContentsMargins(22, 12, 22, 12)
         hl.setSpacing(16)
         logo = QLabel()
+        self._logo = logo
         logo.setPixmap(self._make_logo(64).scaled(64, 64, Qt.KeepAspectRatio, Qt.SmoothTransformation))
         logo.setFixedSize(64, 64)
         hl.addWidget(logo)
         tbox = QVBoxLayout()
+        self._tbox = tbox
         tbox.setSpacing(3)
         title = QLabel("🐱 闽南科技学院 · 校园钓鱼网页检测助手")
         title.setObjectName("headerTitle")
@@ -287,6 +375,7 @@ class MainWindow(QMainWindow):
         hl.addWidget(badge, 0, Qt.AlignTop)
         root.addWidget(header)
         input_row = QHBoxLayout()
+        self._input_row = input_row
         input_row.setSpacing(10)
         self.url_input = QLineEdit()
         self.url_input.setPlaceholderText("请输入要检测的网址，例如：https://www.mku.edu.cn 或 https://example.com")
@@ -303,10 +392,16 @@ class MainWindow(QMainWindow):
         root.addLayout(input_row)
         card = QFrame()
         card.setObjectName("resultCard")
-        cl = QVBoxLayout(card)
-        cl.setContentsMargins(22, 20, 22, 20)
+        card_outer = QHBoxLayout(card)
+        self._card_outer = card_outer
+        card_outer.setContentsMargins(22, 20, 22, 20)
+        card_outer.setSpacing(14)
+        cl = QVBoxLayout()
+        self._clay = cl
+        cl.setContentsMargins(0, 0, 0, 0)
         cl.setSpacing(14)
         top = QHBoxLayout()
+        self._top_lay = top
         top.setSpacing(18)
         self.level_badge = QLabel("等待检测")
         self.level_badge.setObjectName("levelBadge")
@@ -315,8 +410,10 @@ class MainWindow(QMainWindow):
         self.level_badge.setMinimumWidth(230)
         top.addWidget(self.level_badge, 0)
         right = QVBoxLayout()
+        self._right_lay = right
         right.setSpacing(4)
         r1 = QHBoxLayout()
+        self._r1_lay = r1
         r1.setSpacing(8)
         t1 = QLabel("风险评分")
         t1.setObjectName("scoreTitle")
@@ -345,23 +442,23 @@ class MainWindow(QMainWindow):
         reason_title = QLabel("风险原因与检测详情")
         reason_title.setObjectName("reasonTitle")
         cl.addWidget(reason_title)
-        result_layout = QHBoxLayout()
-        result_layout.setSpacing(12)
         self.reason_view = QTextBrowser()
         self.reason_view.setOpenExternalLinks(False)
         self.reason_view.setMinimumHeight(170)
-        result_layout.addWidget(self.reason_view, 3)
+        cl.addWidget(self.reason_view, 1)
         radar_card = QFrame()
         radar_card.setObjectName("radarCard")
         self.radar_card = radar_card
         radar_layout = QVBoxLayout(radar_card)
+        self._radar_lay = radar_layout
         radar_layout.setContentsMargins(8, 8, 8, 8)
         self.radar_widget = RadarChartWidget()
-        radar_layout.addWidget(self.radar_widget, 0, Qt.AlignCenter)
-        result_layout.addWidget(radar_card, 1)
-        cl.addLayout(result_layout, 1)
+        radar_layout.addWidget(self.radar_widget, 1)
+        card_outer.addLayout(cl, 3)
+        card_outer.addWidget(radar_card, 2)
         root.addWidget(card, 1)
         bottom = QHBoxLayout()
+        self._bottom_lay = bottom
         bottom.setSpacing(12)
         self.export_btn = QPushButton("📄  导出检测报告（txt）")
         self.export_btn.setObjectName("secondaryBtn")
@@ -391,41 +488,154 @@ class MainWindow(QMainWindow):
         self.setStatusBar(self.status)
         self.status.showMessage("🌸 就绪 · 闽南科技学院网络工程专业 · 本地特征库 v2.0 · 断网可用域名检测 💗")
 
-    def _apply_style(self):
-        self.setStyleSheet("\n            QMainWindow {\n                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n                    stop:0 #fff7ed, stop:1 #ffedd5);\n            }\n            QFrame#header {\n                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n                    stop:0 #fb923c, stop:0.6 #fdba74, stop:1 #fcd34d);\n                border-radius: 20px;\n            }\n            QLabel#headerTitle {\n                font-size: 22px; font-weight: bold; color: #ffffff;\n            }\n            QLabel#headerSub { font-size: 13px; color: #fff7ed; }\n            QLabel#headerBadge {\n                font-size: 11px; color: #ffffff;\n                background: rgba(255,255,255,0.25);\n                border: 1px solid rgba(255,255,255,0.4);\n                border-radius: 14px; padding: 6px 14px;\n            }\n            QLineEdit {\n                padding: 0 16px; font-size: 14px;\n                border: 2px solid #fed7aa; border-radius: 16px;\n                background: #ffffff;\n            }\n            QLineEdit:focus { border: 2px solid #fb923c; background: #fff7ed; }\n            QPushButton#primaryBtn {\n                font-size: 15px; font-weight: bold; color: #ffffff;\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #fb923c, stop:1 #f59e0b);\n                border: none; border-radius: 16px;\n            }\n            QPushButton#primaryBtn:hover {\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #ea580c, stop:1 #d97706);\n            }\n            QPushButton#primaryBtn:pressed { background: #c2410c; }\n            QPushButton#primaryBtn:disabled { background: #fdba74; }\n            QPushButton#secondaryBtn {\n                font-size: 13px; color: #c2410c;\n                background: #ffffff; border: 2px solid #fed7aa;\n                border-radius: 14px; padding: 0 18px;\n            }\n            QPushButton#secondaryBtn:hover { background: #fff7ed; }\n            QPushButton#secondaryBtn:disabled { color: #fdba74; }\n            QFrame#resultCard {\n                background: #ffffff;\n                border: 2px solid #ffedd5;\n                border-radius: 20px;\n            }\n            QLabel#levelBadge {\n                font-size: 16px; font-weight: bold; color: #ffffff;\n                background: #d4d4d8; border-radius: 16px;\n            }\n            QLabel#scoreTitle { font-size: 13px; color: #9ca3af; }\n            QLabel#scoreValue { font-size: 22px; font-weight: bold; color: #c2410c; }\n            QLabel#scoreHint { font-size: 11px; color: #fdba74; }\n            QProgressBar#scoreBar {\n                border: none; border-radius: 8px;\n                background: #f3f4f6;\n            }\n            QProgressBar#scoreBar::chunk {\n                border-radius: 8px;\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #fdba74, stop:1 #fb923c);\n            }\n            QLabel#conclusionLabel {\n                font-size: 14px; color: #4b5563;\n                background: #fff7ed; border-radius: 14px; padding: 12px 16px;\n            }\n            QLabel#reasonTitle { font-size: 14px; font-weight: bold; color: #c2410c; }\n            QTextBrowser {\n                font-size: 13px; color: #6b7280;\n                border: 2px solid #ffedd5; border-radius: 14px;\n                background: #fffbeb; padding: 10px;\n            }\n            QLabel#tip { font-size: 12px; color: #fdba74; }\n            QStatusBar#statusBar {\n                font-size: 12px; color: #fff7ed;\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #fb923c, stop:1 #fcd34d);\n                border-radius: 10px;\n            }\n            QStatusBar#statusBar::item { border: none; }\n        ")
+    def _style_template(self):
+        return ("\n            QMainWindow {\n                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n                    stop:0 #fff7ed, stop:1 #ffedd5);\n            }\n            QFrame#header {\n                background: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n                    stop:0 #fb923c, stop:0.6 #fdba74, stop:1 #fcd34d);\n                border-radius: 20px;\n            }\n            QLabel#headerTitle {\n                font-size: 22px; font-weight: bold; color: #ffffff;\n            }\n            QLabel#headerSub { font-size: 13px; color: #fff7ed; }\n            QLabel#headerBadge {\n                font-size: 11px; color: #ffffff;\n                background: rgba(255,255,255,0.25);\n                border: 1px solid rgba(255,255,255,0.4);\n                border-radius: 14px; padding: 6px 14px;\n            }\n            QLineEdit {\n                padding: 0 16px; font-size: 14px;\n                border: 2px solid #fed7aa; border-radius: 16px;\n                background: #ffffff;\n            }\n            QLineEdit:focus { border: 2px solid #fb923c; background: #fff7ed; }\n            QPushButton#primaryBtn {\n                font-size: 15px; font-weight: bold; color: #ffffff;\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #fb923c, stop:1 #f59e0b);\n                border: none; border-radius: 16px;\n            }\n            QPushButton#primaryBtn:hover {\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #ea580c, stop:1 #d97706);\n            }\n            QPushButton#primaryBtn:pressed { background: #c2410c; }\n            QPushButton#primaryBtn:disabled { background: #fdba74; }\n            QPushButton#secondaryBtn {\n                font-size: 13px; color: #c2410c;\n                background: #ffffff; border: 2px solid #fed7aa;\n                border-radius: 14px; padding: 0 18px;\n            }\n            QPushButton#secondaryBtn:hover { background: #fff7ed; }\n            QPushButton#secondaryBtn:disabled { color: #fdba74; }\n            QFrame#resultCard {\n                background: #ffffff;\n                border: 2px solid #ffedd5;\n                border-radius: 20px;\n            }\n            QLabel#levelBadge {\n                font-size: 16px; font-weight: bold; color: #ffffff;\n                background: #d4d4d8; border-radius: 16px;\n            }\n            QLabel#scoreTitle { font-size: 13px; color: #9ca3af; }\n            QLabel#scoreValue { font-size: 22px; font-weight: bold; color: #c2410c; }\n            QLabel#scoreHint { font-size: 11px; color: #fdba74; }\n            QProgressBar#scoreBar {\n                border: none; border-radius: 8px;\n                background: #f3f4f6;\n            }\n            QProgressBar#scoreBar::chunk {\n                border-radius: 8px;\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #fdba74, stop:1 #fb923c);\n            }\n            QLabel#conclusionLabel {\n                font-size: 14px; color: #4b5563;\n                background: #fff7ed; border-radius: 14px; padding: 12px 16px;\n            }\n            QLabel#reasonTitle { font-size: 14px; font-weight: bold; color: #c2410c; }\n            QTextBrowser {\n                font-size: 13px; color: #6b7280;\n                border: 2px solid #ffedd5; border-radius: 14px;\n                background: #fffbeb; padding: 10px;\n            }\n            QLabel#tip { font-size: 12px; color: #fdba74; }\n            QStatusBar#statusBar {\n                font-size: 12px; color: #fff7ed;\n                background: qlineargradient(x1:0,y1:0,x2:1,y2:0,\n                    stop:0 #fb923c, stop:1 #fcd34d);\n                border-radius: 10px;\n            }\n            QStatusBar#statusBar::item { border: none; }\n        ")
 
     # ---------- 自适应排版 ----------
+    BASE_W = 900.0
+    BASE_H = 700.0
+
     def _ui_scale(self):
-        """按窗口宽度算缩放系数：900px 为设计基准（13px 字号），放大最多 1.55 倍、缩小到 0.9 倍。"""
+        """整页缩放系数：以 900×700 为设计基准，同时受宽、高约束，范围 0.85~1.5。"""
         try:
-            w = self.width()
+            w, h = self.width(), self.height()
         except Exception:
             return 1.0
-        return max(0.9, min(w / 900.0, 1.55))
+        s = min(w / self.BASE_W, h / self.BASE_H)
+        return max(0.85, min(s, 1.5))
+
+    def _s(self, v, s=None):
+        """按当前缩放系数把一个设计像素值换算成实际像素。"""
+        if s is None:
+            s = self._ui_scale()
+        return max(1, round(v * s))
+
+    def _scale_qss(self, qss, s):
+        """把样式表里所有 px 数值按缩放系数等比放缩，避免逐个手写。"""
+        import re
+
+        def _rep(m):
+            v = float(m.group(1)) * s
+            return "%d%s" % (max(1, round(v)), m.group(2))
+
+        return re.sub(r"([0-9]+(?:\.[0-9]+)?)(px)", _rep, qss)
+
+    def _apply_style(self, scale=None):
+        """应用整套样式：字号、圆角、内边距全部随窗口缩放。"""
+        s = self._ui_scale() if scale is None else scale
+        try:
+            self.setStyleSheet(self._scale_qss(self._style_template(), s))
+        except Exception:
+            pass
+
+    def _apply_metrics(self, scale=None):
+        """应用固定像素的尺寸/间距（高度、宽度、外边距），同样随窗口缩放。"""
+        s = self._ui_scale() if scale is None else scale
+        try:
+            self._root_lay.setContentsMargins(self._s(20, s), self._s(20, s), self._s(20, s), self._s(16, s))
+            self._root_lay.setSpacing(self._s(14, s))
+            self._header.setFixedHeight(self._s(96, s))
+            self._hlay.setContentsMargins(self._s(22, s), self._s(12, s), self._s(22, s), self._s(12, s))
+            self._hlay.setSpacing(self._s(16, s))
+            logo_px = self._s(64, s)
+            self._logo.setFixedSize(logo_px, logo_px)
+            self._logo.setPixmap(self._make_logo(logo_px))
+            self._tbox.setSpacing(self._s(3, s))
+            self._input_row.setSpacing(self._s(10, s))
+            self.url_input.setMinimumHeight(self._s(46, s))
+            # 窗口不够宽时换短占位文字，避免提示语被截断
+            if self.width() < 1180:
+                self.url_input.setPlaceholderText("请输入要检测的网址，如 https://www.mku.edu.cn")
+            else:
+                self.url_input.setPlaceholderText("请输入要检测的网址，例如：https://www.mku.edu.cn 或 https://example.com")
+            self.detect_btn.setMinimumHeight(self._s(46, s))
+            self.detect_btn.setMinimumWidth(self._s(160, s))
+            self._card_outer.setContentsMargins(self._s(22, s), self._s(20, s), self._s(22, s), self._s(20, s))
+            self._card_outer.setSpacing(self._s(14, s))
+            self._clay.setContentsMargins(0, 0, 0, 0)
+            self._clay.setSpacing(self._s(14, s))
+            self._top_lay.setSpacing(self._s(18, s))
+            self.level_badge.setFixedHeight(self._s(78, s))
+            self.level_badge.setMinimumWidth(self._s(230, s))
+            self._right_lay.setSpacing(self._s(4, s))
+            self._r1_lay.setSpacing(self._s(8, s))
+            self.score_bar.setFixedHeight(self._s(14, s))
+            self.reason_view.setMinimumHeight(self._s(170, s))
+            self._radar_lay.setContentsMargins(self._s(8, s), self._s(8, s), self._s(8, s), self._s(8, s))
+            radar_min = max(self._s(150, s), 220)
+            self.radar_widget.setMinimumSize(radar_min, radar_min)
+            self.radar_card.setMinimumWidth(radar_min + 2 * self._s(8, s))
+            self._bottom_lay.setSpacing(self._s(12, s))
+            for btn in (self.export_btn, self.export_pdf_btn, self.load_features_btn):
+                btn.setMinimumHeight(self._s(36, s))
+        except Exception:
+            pass
 
     def _apply_detail_font(self):
-        """检测详情文字随窗口大小自适应；字号变化时才重设样式，避免频繁重绘。"""
+        """检测详情文字随窗口大小自适应（与整页缩放保持同一系数）。"""
         try:
-            fs = int(round(13 * self._ui_scale()))
+            s = self._ui_scale()
+            fs = round(13 * s)
             if fs == self._detail_fs:
                 return
             self._detail_fs = fs
             self.reason_view.setStyleSheet(
                 "QTextBrowser {\n"
                 f"    font-size: {fs}px; color: #6b7280;\n"
-                "    border: 2px solid #ffedd5; border-radius: 14px;\n"
-                "    background: #fffbeb; padding: 10px;\n"
+                f"    border: 2px solid #ffedd5; border-radius: {self._s(14, s)}px;\n"
+                f"    background: #fffbeb; padding: {self._s(10, s)}px;\n"
                 "}"
             )
         except Exception:
             pass
 
+    def _apply_score_bar_style(self):
+        """风险分进度条：圆角与色块同样随窗口缩放，等级色沿用最近一次的检测结果。"""
+        try:
+            s = self._ui_scale()
+            chunk = self._chunk_qss or LEVEL_CHUNK["未知"]
+            r = self._s(7, s)
+            self.score_bar.setStyleSheet(
+                f"QProgressBar#scoreBar {{ border:none; border-radius:{r}px; background:#e2e8f0; }}"
+                f"QProgressBar#scoreBar::chunk {{ border-radius:{r}px; background:{chunk}; }}"
+            )
+        except Exception:
+            pass
+
+    def _apply_all(self):
+        """一次性刷新整页的自适应排版。"""
+        s = self._ui_scale()
+        self._style_scale = s
+        self._apply_style(s)
+        self._apply_metrics(s)
+        self._apply_detail_font()
+        self._apply_score_bar_style()
+        self._sync_min_size()
+
+    def _sync_min_size(self):
+        """窗口最小尺寸不低于内容所需，避免用户把窗口缩得太小后按钮、雷达被裁掉。"""
+        try:
+            need = self.centralWidget().minimumSizeHint()
+            scr = QApplication.primaryScreen().availableGeometry()
+            min_w = min(max(760, need.width()), max(760, scr.width()))
+            min_h = min(max(560, need.height()), max(560, scr.height()))
+            cur = self.minimumSize()
+            if abs(min_w - cur.width()) > 6 or abs(min_h - cur.height()) > 6:
+                self.setMinimumSize(min_w, min_h)
+        except Exception:
+            pass
+
     def resizeEvent(self, event):
         super().resizeEvent(event)
-        self._apply_detail_font()
-        # 窄窗口优先保证详情文字可读，雷达图暂时隐藏；窗口拉宽后自动恢复
+        s = self._ui_scale()
+        # 缩放系数变化够大才整套重排，避免拖动窗口时反复重绘
+        if abs(s - getattr(self, "_style_scale", -1.0)) >= 0.03:
+            self._apply_all()
+        else:
+            self._apply_detail_font()
+        # 雷达图尽量都显示；空间实在放不下才隐藏（阈值按宽度和高度同时判断）
         try:
-            self.radar_card.setVisible(self.width() >= 840)
+            self.radar_card.setVisible(self.width() >= 840 and self.height() >= 640)
         except Exception:
             pass
 
@@ -483,7 +693,7 @@ class MainWindow(QMainWindow):
         self._set_level_display(level)
         raw_score = report.get("score", 0)
         try:
-            score = int(round(float(raw_score)))
+            score = round(float(raw_score))
         except (TypeError, ValueError):
             score = 0
         elapsed = report.get("elapsed", 0)
@@ -491,7 +701,8 @@ class MainWindow(QMainWindow):
         self.score_bar.setRange(0, 100)
         self.score_bar.setValue(score)
         chunk = LEVEL_CHUNK.get(level, LEVEL_CHUNK["安全"])
-        self.score_bar.setStyleSheet(f"QProgressBar#scoreBar {{ border:none; border-radius:7px; background:#e2e8f0; }}QProgressBar#scoreBar::chunk {{ border-radius:7px; background:{chunk}; }}")
+        self._chunk_qss = chunk
+        self._apply_score_bar_style()
         self.conclusion_label.setText(report.get("conclusion", ""))
         parts = [
          "【风险原因】"]
@@ -507,7 +718,7 @@ class MainWindow(QMainWindow):
             parts.append(f'· 抓取成功（HTTP {fetch.get("status", "?")}）')
             parts.append(f'· 页面标题：{fetch.get("title", "（无标题）")}')
             parts.append(f'· 最终地址：{fetch.get("final_url", "")}')
-            parts.append(f'· 重定向 {fetch.get("redirect_count", 0)} 次 · {"HTTPS 加密" if fetch.get("is_https") else "HTTP 明文"} · 证书{"正常" if fetch.get("ssl_verified") else "异常"} · 表单输入框 {fetch.get("form_count", 0)} 个')
+            parts.append(f'· 重定向 {fetch.get("redirect_count", 0)} 次 · {"HTTPS 加密" if fetch.get("is_https") else "HTTP 明文"} · 表单输入框 {fetch.get("form_count", 0)} 个')
         else:
             err = fetch.get("error", "未知原因")
             parts.append(f"· 抓取失败：{err}")
@@ -518,42 +729,54 @@ class MainWindow(QMainWindow):
         self.status.showMessage(f'检测完成：{report.get("url", "")} · 等级 {level} · {score} 分 · 耗时 {elapsed} 秒')
 
     def _update_radar(self, report):
-        """从 URL 提取 8 维特征，更新雷达图"""
+        """从 URL 提取 8 维特征，更新雷达图（每一项都归一到 0~1，正常站点不应被拉满）"""
         url = report.get("url", "")
         score = report.get("score", 0)
         try:
-            from urllib.parse import urlparse
             import re
+            from urllib.parse import urlparse
             parsed = urlparse(url if url.startswith("http") else f"http://{url}")
-            domain = parsed.netloc.lower()
+            host = (parsed.netloc or "").lower()
+            if "@" in host:
+                host = host.split("@")[-1]
+            if ":" in host:
+                host = host.split(":", 1)[0]
+            if not host:
+                host = (parsed.path or "").split("/")[0].lower()
+            length = max(len(host), 1)
+            digits = sum(1 for c in host if c.isdigit()) / length
+            # 特殊字符只算 . 和 - 之外的符号，避免正常域名的点号把这一维直接拉满
+            special = sum(1 for c in host if (not c.isalnum()) and c not in ".-") / length
+            dots = host.count(".")
+            is_ip = bool(re.match(r"^\d{1,3}(\.\d{1,3}){3}$", host))
             values = [
-             min(1, len(domain) / 40),
-             min(1, sum((c.isdigit() for c in domain)) / max(len(domain), 1) * 5),
-             min(1, sum((c in "-._%" for c in domain)) / max(len(domain), 1) * 5),
-             min(1, domain.count(".") / 5),
-             1.0 if re.match("^\\d+\\.\\d+\\.\\d+\\.\\d+$", domain) else 0,
-             1.0 if len(domain) > 30 else len(domain) / 30,
+             min(1, len(host) / 40),
+             min(1, digits * 8),
+             min(1, special * 8),
+             min(1, max(0, dots - 1) / 3),
+             1.0 if is_ip else 0,
+             1.0 if len(host) > 30 else len(host) / 30,
              1.0 if "@" in url else 0,
-             1.0 if "-" in domain else 0]
+             1.0 if "-" in host else 0]
             self.radar_widget.set_data(values, score)
         except Exception:
             pass
 
     def _set_level_display(self, level):
+        r = self._s(16)
         if level == "—":
             self.level_badge.setText("🐱 等待钓鱼")
-            self.level_badge.setStyleSheet("background:#d4d4d8; color:#ffffff; border-radius:16px;")
+            self.level_badge.setStyleSheet(f"background:#d4d4d8; color:#ffffff; border-radius:{r}px;")
             return
-        (c1, c2) = LEVEL_GRAD.get(level, ('#d4d4d8', '#d4d4d8'))
-        icon = LEVEL_ICON.get(level, "")
+        c1, c2 = LEVEL_GRAD.get(level, ('#d4d4d8', '#d4d4d8'))
         level_text = {
           '安全': "🐱 钓到小鱼啦 · 安全",
           '可疑': "😼 好像有奇怪的鱼 · 可疑",
           '高危': "🙀 钓到炸弹了 · 高危",
           '未知': "🐾 没抓到页面 · 未知"}.get(level, level)
         self.level_badge.setText(level_text)
-        self.level_badge.setStyleSheet(f"background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop:0 {c1}, stop:1 {c2});color:#ffffff; border-radius:16px;")
-        self.level_badge.setFont(QFont("Microsoft YaHei", 14, QFont.Bold))
+        self.level_badge.setStyleSheet(f"background: qlineargradient(x1:0,y1:0,x2:1,y2:1, stop:0 {c1}, stop:1 {c2});color:#ffffff; border-radius:{r}px;")
+        self.level_badge.setFont(QFont("Microsoft YaHei", max(9, round(14 * self._ui_scale())), QFont.Bold))
 
     def on_export(self):
         if not self._last_report:

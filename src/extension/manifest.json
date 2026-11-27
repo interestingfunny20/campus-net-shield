@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "校园钓鱼网页检测助手",
-  "version": "1.0.0",
-  "description": "打开任意网站自动检测钓鱼风险，无论安全与否都会弹窗提示。面向高校学生的轻量安全工具。",
+  "name": "校园网盾——高校钓鱼网页轻量检测助手",
+  "version": "2.3.0",
+  "description": "打开网页自动检测钓鱼风险并提示，面向高校教务/奖助/缴费仿冒场景；本地规则与模型，不上传网址。",
   "permissions": [
     "tabs",
     "notifications",

@@ -1,6 +1,6 @@
 {
   "feature_version": "1.0",
-  "feature_description": "面向高校场景的本地钓鱼网页检测特征库（闽南科技学院2026挑战杯参赛作品）",
+  "feature_description": "面向高校场景的本地钓鱼网页检测特征库 v2.3",
 
   "official_domains": {
     "mku.edu.cn": "闽南科技学院"

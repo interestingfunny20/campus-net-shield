@@ -1,0 +1,712 @@
+{
+  "before": [
+    {
+      "url": "http://mku-edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-edu.com",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.com」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mkuedu.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://mku.edu.com",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://mkv.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mkv.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://rnku.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「rnku.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mkujwc.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://www.mku-edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-edu.top",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.top」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.top」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.xyz",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.xyz」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.icu",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.icu」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.icu」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.vip",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.vip」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.vip」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.club",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.club」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.club」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.online",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.online」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.online」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.site",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.site」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.site」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.link",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.link」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.link」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.monster",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.monster」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.monster」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.stream",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.stream」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.stream」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.rest",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.rest」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.rest」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://jw.mku-edu.cn",
+      "score": 55,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "子域名含可疑关键词「jw」，钓鱼网站常伪装成登录/验证/缴费入口"
+      ]
+    },
+    {
+      "url": "http://jwc.mku-edu.cn",
+      "score": 55,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "子域名含可疑关键词「jw」，钓鱼网站常伪装成登录/验证/缴费入口"
+      ]
+    },
+    {
+      "url": "http://login.mku-edu.cn",
+      "score": 55,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+      ]
+    },
+    {
+      "url": "http://mku-login.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-login.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-jwc.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-jwc.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-xsc.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-xsc.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-pay.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-pay.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-grant.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-grant.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-subsidy.top",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-subsidy.top」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.top」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-jw.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-jw.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.login-verify.top",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "域名后缀「.top」为免费/低价注册后缀，是钓鱼网站高发区",
+        "ML 模型二次判别：钓鱼概率 100%，规则分 65 提升至 68"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.verify.xyz",
+      "score": 65,
+      "level": "可疑",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.evil.com",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "ML 模型二次判别：钓鱼概率 97%，规则分 55 提升至 68"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.secure-login.com",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "ML 模型二次判别：钓鱼概率 99%，规则分 55 提升至 68"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.account-update.club",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "域名后缀「.club」为免费/低价注册后缀，是钓鱼网站高发区",
+        "ML 模型二次判别：钓鱼概率 100%，规则分 65 提升至 68"
+      ]
+    },
+    {
+      "url": "http://xkmu.edu.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://mkx.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mkx.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://nkmu.edu.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://mku2.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku2.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 75/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://jnku.edu.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    }
+  ],
+  "after": [
+    {
+      "url": "http://mku-edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-edu.com",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.com」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mkuedu.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://mku.edu.com",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://mkv.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mkv.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://rnku.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「rnku.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 100/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mkujwc.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://www.mku-edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-edu.top",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.top」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.top」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.xyz",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.xyz」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.icu",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.icu」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.icu」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.vip",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.vip」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.vip」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.club",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.club」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.club」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.online",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.online」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.online」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.site",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.site」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.site」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.link",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.link」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.link」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.monster",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.monster」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.monster」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.stream",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.stream」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.stream」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-edu.rest",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.rest」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.rest」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://jw.mku-edu.cn",
+      "score": 55,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "子域名含可疑关键词「jw」，钓鱼网站常伪装成登录/验证/缴费入口"
+      ]
+    },
+    {
+      "url": "http://jwc.mku-edu.cn",
+      "score": 55,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "子域名含可疑关键词「jw」，钓鱼网站常伪装成登录/验证/缴费入口"
+      ]
+    },
+    {
+      "url": "http://login.mku-edu.cn",
+      "score": 55,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-edu.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "子域名含可疑关键词「login」，钓鱼网站常伪装成登录/验证/缴费入口"
+      ]
+    },
+    {
+      "url": "http://mku-login.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-login.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-jwc.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-jwc.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-xsc.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-xsc.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-pay.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-pay.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-grant.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-grant.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku-subsidy.top",
+      "score": 50,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-subsidy.top」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站",
+        "域名后缀「.top」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku-jw.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku-jw.cn」以高校官方名「mku」开头并附加分隔符或数字，疑似蹭名仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.login-verify.top",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "域名后缀「.top」为免费/低价注册后缀，是钓鱼网站高发区",
+        "ML 模型二次判别：钓鱼概率 100%，规则分 65 提升至 68"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.verify.xyz",
+      "score": 65,
+      "level": "可疑",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "域名后缀「.xyz」为免费/低价注册后缀，是钓鱼网站高发区"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.evil.com",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "ML 模型二次判别：钓鱼概率 97%，规则分 55 提升至 68"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.secure-login.com",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "ML 模型二次判别：钓鱼概率 99%，规则分 55 提升至 68"
+      ]
+    },
+    {
+      "url": "http://mku.edu.cn.account-update.club",
+      "score": 68.0,
+      "level": "高危",
+      "reasons": [
+        "子域名层级过多（3层），正规校园网站通常不超过2层，异常网站常用多层子域名伪装",
+        "子域名中嵌入了官方域名「mku.edu.cn」，属于「官方域名+.evil.com」式仿冒手法",
+        "域名后缀「.club」为免费/低价注册后缀，是钓鱼网站高发区",
+        "ML 模型二次判别：钓鱼概率 100%，规则分 65 提升至 68"
+      ]
+    },
+    {
+      "url": "http://xkmu.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「xkmu.edu.cn」与高校官方域名「xmu.edu.cn」主名相似度 75/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://mkx.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mkx.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 67/100（部分相似，需留意），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://nkmu.edu.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    },
+    {
+      "url": "http://mku2.edu.cn",
+      "score": 40,
+      "level": "可疑",
+      "reasons": [
+        "域名「mku2.edu.cn」与高校官方域名「mku.edu.cn」主名相似度 75/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+      ]
+    },
+    {
+      "url": "http://jnku.edu.cn",
+      "score": 0,
+      "level": "未知",
+      "reasons": [
+        "页面抓取失败，仅完成域名基础检测",
+        "离线评测：未抓取页面内容（域名层口径）"
+      ]
+    }
+  ],
+  "changed": [
+    {
+      "url": "http://xkmu.edu.cn",
+      "group": "无关对照",
+      "before": [
+        "未知",
+        0
+      ],
+      "after": [
+        "可疑",
+        40
+      ],
+      "new_reasons": [
+        "域名「xkmu.edu.cn」与高校官方域名「xmu.edu.cn」主名相似度 75/100（高度疑似仿冒），疑似形近字仿冒钓鱼网站"
+      ]
+    }
+  ]
+}

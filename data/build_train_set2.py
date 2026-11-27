@@ -3,6 +3,9 @@
 高校站当成钓鱼站（v1 因负样本全是海外域名，测试集 66 条误报集中在高校官网）。
 
 正样本仍取 Phishing.Database ACTIVE，与标注集严格去重。
+
+注意：本脚本依赖《Phishing.Database》与《Tranco》原始榜单（体积过大未随包提供），
+    仅作取数过程留档；复现指标请直接用已产出的 train2_pos.txt / train2_neg.txt。
 """
 import random
 from pathlib import Path

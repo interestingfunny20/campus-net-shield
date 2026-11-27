@@ -1,5 +1,5 @@
 """
-网页内容特征识别模块（依据反编译产物校正后的可运行版本）
+网页内容特征识别模块
 
 功能：
     1. 识别页面中的校园高发钓鱼关键词（教务系统 / 奖助学金 / 校园缴费等）；
@@ -51,9 +51,7 @@ class ContentChecker:
             return True
         if re.search(f"(^|[_-]){re.escape(sf)}([_-]|$)", name):
             return True
-        if len(sf) >= 5 and sf in name:
-            return True
-        return False
+        return bool(len(sf) >= 5 and sf in name)
 
     def check(self, content, domain_info=None):
         """content: ContentFetcher.fetch 的返回结果；domain_info: DomainChecker.check 的 info"""

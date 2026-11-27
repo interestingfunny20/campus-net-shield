@@ -6,12 +6,17 @@
 特征：与 exe 内 features_extractor 完全一致的 12 维
 """
 import json
+import os
 import sys
 from pathlib import Path
 
 W = Path(__file__).resolve().parent
-sys.path.insert(0, str(W / "pylib"))
-sys.path.insert(0, str(W.parent / "桌面端源码还原"))
+
+# 检测器源码位置：默认按项目目录结构推导，可用环境变量覆盖（占位常量，换机器无需改代码）
+DETECTOR_SRC_ENV = "DOUBAO_DETECTOR_SRC"
+DETECTOR_SRC = Path(os.environ.get(DETECTOR_SRC_ENV,
+                                   str(W.parents[1] / "01_检测程序" / "源码")))
+sys.path.insert(0, str(DETECTOR_SRC))
 
 import joblib  # noqa: E402
 import numpy as np  # noqa: E402
@@ -41,8 +46,8 @@ cv = cross_val_score(clf, X, y, cv=5, scoring="f1")
 print("5 折交叉验证 F1: %.4f (±%.4f)" % (cv.mean(), cv.std()))
 clf.fit(X, y)
 
-tp_rows = json.load(open(W / "pos_results.json", encoding="utf-8"))
-tn_rows = json.load(open(W / "neg_results.json", encoding="utf-8"))
+ALL = json.load(open(W / "exe_202_results.json", encoding="utf-8"))
+tp_rows, tn_rows = ALL[:100], ALL[100:]      # 前 100 条正样本、后 102 条负样本
 Xp = featurize([x["domain"] for x in tp_rows])
 Xn = featurize([x["domain"] for x in tn_rows])
 yp, yn = clf.predict(Xp), clf.predict(Xn)

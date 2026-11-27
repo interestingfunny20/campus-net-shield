@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """按 v2.3 实际逻辑（白名单跳过 + ML 命中即定级）复算 202 / 39 两套指标"""
 import sys, os, json
-W = r"C:\Users\MR\Doubao\chats\2026-11-24\new-chat-1\_work"
-sys.path.insert(0, os.path.join(W, "build_src"))
-sys.path.insert(0, os.path.join(W, "build_env"))
+# 路径全部按项目目录推导，换机器也能直接跑
+HERE = os.path.dirname(os.path.abspath(__file__))
+PKG = os.path.dirname(os.path.dirname(HERE))          # 项目根目录
+sys.path.insert(0, os.path.join(PKG, "01_检测程序", "源码"))
 
 import tldextract
 tldextract.extract = tldextract.TLDExtract(suffix_list_urls=())
@@ -37,8 +38,8 @@ def apply(rows):
     return out
 
 
-r202 = json.load(open(os.path.join(W, "exe_202_results.json"), encoding="utf-8"))
-r39 = json.load(open(os.path.join(W, "exe_onsite_results.json"), encoding="utf-8"))
+r202 = json.load(open(os.path.join(HERE, "exe_202_results.json"), encoding="utf-8"))
+r39 = json.load(open(os.path.join(HERE, "exe_onsite_results.json"), encoding="utf-8"))
 
 # 白名单新增的 5 个站点规则分已变化，端到端重跑刷新真实分数
 REFRESH = {"http://www.bankcomm.com", "http://www.wanfangdata.com.cn",
@@ -85,6 +86,6 @@ if fp_rows:
     for x in fp_rows:
         print("   %-45s %s 分 prob=%.3f" % (x["url"][:45], x["score"], x["ml_prob"]))
 
-json.dump(a202, open(os.path.join(W, "v23_202.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-json.dump(a39, open(os.path.join(W, "v23_39.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+json.dump(a202, open(os.path.join(HERE, "v23_202.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+json.dump(a39, open(os.path.join(HERE, "v23_39.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
 print("\n已写出 v23_202.json / v23_39.json")

@@ -54,7 +54,7 @@ trustBtn.addEventListener("click", async () => {
 
 function renderHistory(history) {
   if (!history || history.length === 0) {
-    historyEl.innerHTML = '<li class="empty">🐟 还没有钓到鱼，去逛逛网站吧</li>';
+    historyEl.innerHTML = '<li class="empty">暂无检测记录</li>';
     return;
   }
   historyEl.innerHTML = history.map(h => `

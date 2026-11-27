@@ -35,23 +35,22 @@ def _patch_tldextract():
 
         tldextract.extract = tldextract.TLDExtract(suffix_list_urls=())
     except Exception as e:
-        _log("tldextract patch 失败：%r" % (e,))
+        _log(f"tldextract patch 失败：{e!r}")
 
 
 def _preload_ml():
     """在主线程预热 ML 依赖：子线程首次加载大型扩展容易与 Qt 的运行时冲突。"""
     try:
-        import numpy  # noqa: F401
         import joblib  # noqa: F401
+        import numpy  # noqa: F401
+        from detector import ml_detector
         from sklearn.ensemble import RandomForestClassifier  # noqa: F401
 
-        from detector import ml_detector
-
         ok = ml_detector.ml_available()
-        _log("ML 预热完成，模型可用：%s" % ok)
+        _log(f"ML 预热完成，模型可用：{ok}")
         return ok
     except Exception as e:
-        _log("ML 预热失败：%r" % (e,))
+        _log(f"ML 预热失败：{e!r}")
         return False
 
 
@@ -78,6 +77,7 @@ def main():
             pass
 
     _preload_ml()
+
 
     from PyQt5.QtGui import QIcon
     from PyQt5.QtWidgets import QApplication

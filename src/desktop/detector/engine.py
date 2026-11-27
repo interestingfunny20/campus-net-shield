@@ -1,7 +1,3 @@
-# decompyle3 version 3.9.3
-# Python bytecode version base 3.8.0 (3413)
-# Decompiled from: Python 3.13.18 (main, Nov 11 2026, 00:19:14) [MSC v.1944 64 bit (AMD64)]
-# Embedded file name: detector\engine.py
 """
 检测总流程编排
 
@@ -9,11 +5,13 @@
     域名检测 → 网页抓取 → 内容识别 → 综合评分 → 输出报告
 """
 import time
-from .domain_checker import DomainChecker
-from .content_fetcher import ContentFetcher
-from .content_checker import ContentChecker
-from .scorer import Scorer
+
 from . import ml_detector
+from .content_checker import ContentChecker
+from .content_fetcher import ContentFetcher
+from .domain_checker import DomainChecker
+from .scorer import Scorer
+
 
 class Detector:
     __doc__ = "完整检测器，GUI 与命令行测试共用"
