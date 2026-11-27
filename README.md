@@ -53,7 +53,7 @@
 - 样本：202 条域外标注集（正 100 / 负 102），逐条结果见 `data/v23_202.json`
 - 域内 39 条构造仿冒集检出 33 条（84.6%），分组结果见 `data/v23_39.json`
 - 单页平均检测 1.21 秒（8 条实测，0.19—3.2 秒）
-- 内置模型 5.1 MB，exe 112.79 MB
+- 内置模型 5.1 MB，exe 111.7 MB（117 133 718 字节，SHA-256 前 16 位 `2172D6960AC5E402`）
 
 ## 快速开始
 
@@ -75,11 +75,12 @@ python src/admin/server.py     # 浏览器访问 http://127.0.0.1:5000
 ## 目录结构
 
 ```
-src/desktop/     PyQt5 桌面端（13 个模块 1 981 行）+ 模型与特征库
-src/extension/   Chrome/Edge MV3 扩展（detector 319 / background 214 / content 78 / popup 101 行）
-src/admin/       Flask 教师后台（server.py 644 行）+ 演示库
-data/            标注集、训练集、逐条结果、复现脚本
-docs/            项目介绍、使用说明、测试记录、研究报告、检查报告、版本说明
+src/desktop/     PyQt5 桌面端（13 个模块 2 254 行）+ 模型与特征库
+src/extension/   Chrome/Edge MV3 扩展（detector 327 / background 214 / content 78 / popup 101 行）
+src/admin/       Flask 教师后台（server.py 645 行）+ 演示库
+data/            标注集、训练集、逐条结果、复现脚本；generalization/ 为多校泛化实验
+docs/            十份定稿文档：作品说明、项目介绍、研究报告、测试数据记录表、功能完备性检查报告、
+                 源码构建说明、扩展使用说明、测试数据索引、规则覆盖度分析、多校泛化验证
 images/          架构图、流程图与三端界面截图
 videos/          桌面端、扩展、后台三段演示
 ```
